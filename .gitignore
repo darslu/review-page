@@ -4,5 +4,19 @@ node_modules/
 # Ignore package-lock.json (optional)
 package-lock.json
 
-# Ignore .npmrc (optional, if you don’t want to track config)
-.npmrc
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# SQLite
+*.db

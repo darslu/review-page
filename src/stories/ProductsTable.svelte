@@ -1,40 +1,105 @@
 <script>
-	let products = [
-		{
-			name: "Rab Muztag GTX",
-			image: "",
-			award: "Best Overall Gaiter",
-			price: "$90.00",
-			pros: "Comfortable, lightweight for the size, replaceable instep, excellent protection",
-			cons: "Thinner material for a full length, challenging lace hook",
-			bottomLine: "An adjustable, lightweight full-length gaiter for sloppy mud, rain, and winter snow",
-			categories: {
-				"Comfort and Breathability": { value: 7.0, weight: 25 },
-				"Debris Protection": { value: 9.0, weight: 25 },
-				"Durability": { value: 6.0, weight: 15 },
-				"Ease of Attachment": { value: 6.0, weight: 15 },
-				"Water Resistance": { value: 8.0, weight: 10 },
-				"Weight": { value: 6.0, weight: 10 }
-			}
-		},
-		{
-			name: "Outdoor Research Helium",
-			image: "",
-			award: "Most Comfortable Full-Length Option",
-			price: "$35.53",
-			pros: "Light, instep strap can be replaced, comfortable, good breathability",
-			cons: "No insulation, thin material isn’t as durable",
-			bottomLine: "A full-length yet lightweight gaiter that feels good and is great in the shoulder seasons",
-			categories: {
-				"Comfort and Breathability": { value: 7.0, weight: 25 },
-				"Debris Protection": { value: 9.0, weight: 25 },
-				"Durability": { value: 6.0, weight: 15 },
-				"Ease of Attachment": { value: 6.0, weight: 15 },
-				"Water Resistance": { value: 8.0, weight: 10 },
-				"Weight": { value: 6.0, weight: 10 }
-			}
-		}
-	];
+let products = [
+    {
+        "name": "Menique Men's 100% Merino Boxer Briefs",
+        "image": "images/menique-boxers.png",
+        "award": "Best Overall Gaiter",
+        "price": "$39.95",
+        "pros": [
+            "Incredibly soft natural 100% Merino Wool",
+            "Flatlock seam construction designed to minimize chafing",
+            "Very stretchy to accommodate a variety of body shapes",
+            "Even after long days, these keep smelling fresh",
+            "Sturdy, comfortable waistband"
+        ],
+        "cons": ["Price point could be a barrier"],
+        "bottomLine": "An adjustable, lightweight full-length gaiter for sloppy mud, rain, and winter snow",
+        "categories": {
+            "Material": { "value": 10, "weight": 12 },
+            "Support": { "value": 10, "weight": 12 },
+            "Breathability": { "value": 10, "weight": 12 },
+            "Durability": { "value": 9, "weight": 12 },
+            "Odor Control": { "value": 10, "weight": 12 }
+        }
+    },
+    {
+        "name": "Smartwool Merino Boxer Briefs",
+        "image": "",
+        "award": "",
+        "price": "$48",
+        "pros": [
+            "Can be worn for multiple days without smells",
+            "Great for daily wear"
+        ],
+        "cons": [
+            "Do not keep you cool in very humid situations",
+            "Wear out faster over time"
+        ],
+        "bottomLine": "A reliable and comfortable pair of Merino wool boxer briefs, but with some durability issues.",
+        "categories": {
+            "Material": { "value": 9, "weight": 12 },
+            "Support": { "value": 9, "weight": 12 },
+            "Breathability": { "value": 8, "weight": 12 },
+            "Durability": { "value": 8, "weight": 12 },
+            "Odor Control": { "value": 9, "weight": 12 }
+        }
+    },
+    {
+        "name": "Icebreaker Anatomica Merino Boxers",
+        "image": "",
+        "award": "",
+        "price": "$45.00",
+        "pros": [
+            "Great breathability, even on hot days",
+            "Top-notch odor control"
+        ],
+        "cons": [
+            "Inseam is a bit short for some",
+            "Runs small; sizing up recommended",
+            "Loses elasticity after washing"
+        ],
+        "bottomLine": "A breathable and comfortable option, but sizing and durability could be better.",
+        "categories": {
+            "Material": { "value": 8, "weight": 12 },
+            "Support": { "value": 7, "weight": 12 },
+            "Breathability": { "value": 9, "weight": 12 },
+            "Durability": { "value": 8, "weight": 12 },
+            "Odor Control": { "value": 9, "weight": 12 }
+        }
+    },
+    {
+        "name": "Patagonia Sender Boxer Briefs 6\"",
+        "image": "",
+        "award": "",
+        "price": "$34",
+        "pros": [],
+        "cons": [],
+        "bottomLine": "A solid, durable option, but lacks standout features in breathability and comfort.",
+        "categories": {
+            "Material": { "value": 8, "weight": 12 },
+            "Support": { "value": 8, "weight": 12 },
+            "Breathability": { "value": 7, "weight": 12 },
+            "Durability": { "value": 8, "weight": 12 },
+            "Odor Control": { "value": 7, "weight": 12 }
+        }
+    },
+    {
+        "name": "Lululemon Rapid Vent Tech Boxer 5\"",
+        "image": "",
+        "award": "",
+        "price": "$38",
+        "pros": [],
+        "cons": [],
+        "bottomLine": "A high-quality option for daily use, though not the best for performance in extreme conditions.",
+        "categories": {
+            "Material": { "value": 7, "weight": 12 },
+            "Support": { "value": 8, "weight": 12 },
+            "Breathability": { "value": 7, "weight": 12 },
+            "Durability": { "value": 8, "weight": 12 },
+            "Odor Control": { "value": 6, "weight": 12 }
+        }
+    }
+];
 
 	const calculateOverallScore = (categories) => {
 	// Sum the total weights
@@ -54,7 +119,7 @@
 	};
 </script>
 
-<div class="overflow-x-auto md:w-[750px] mx-auto">
+<div class="overflow-x-auto md:w-[750px] mx-5 xl:mx-auto">
 	<table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-sm">
 		<thead class="bg-gray-100">
 			<tr>
@@ -65,11 +130,6 @@
 			</tr>
 		</thead>
 		<tbody class="divide-y divide-gray-200">
-			<tr>
-				<td class="px-4 py-2 font-medium text-gray-800">Award</td>
-				<td class="px-4 py-2">Best Overall Gaiter</td>
-				<td class="px-4 py-2">Most Comfortable Full-Length Option</td>
-			</tr>
 			<tr>
 				<td class="px-4 py-2 font-medium text-gray-800">Image</td>
 				{#each products as product}
@@ -102,7 +162,7 @@
 				  <td class="px-4 py-2">
 					<div class="relative w-full bg-gray-200 rounded">
 					  <div
-						class="bg-green-500 text-xs leading-none text-right pr-2 text-white h-4 rounded flex justify-end items-center"
+						class="bg-[#5DCE8B] text-xs leading-none text-right pr-2 text-white h-4 rounded flex justify-end items-center"
 						style="width: {calculateOverallScore(product.categories)*10}%;">
 						{calculateOverallScore(product.categories)*10}
 					  </div>
@@ -113,13 +173,25 @@
 			<tr>
 				<td class="px-4 py-2 font-medium text-gray-800">Pros</td>
 				{#each products as product}
-					<td class="px-4 py-2">{product.pros}</td>
+					<td class="px-4 py-2">
+						<ul class="list-disc ml-5">
+							{#each product.pros as pros }
+							<li>{pros}</li>
+							{/each}
+						</ul>
+					</td>
 				{/each}
 			</tr>
 			<tr>
 				<td class="px-4 py-2 font-medium text-gray-800">Cons</td>
 				{#each products as product}
-					<td class="px-4 py-2">{product.cons}</td>
+					<td class="px-4 py-2">
+						<ul class="list-disc ml-5">
+							{#each product.cons as cons }
+							<li>{cons}</li>
+							{/each}
+						</ul>
+					</td>
 				{/each}
 			</tr>
 			<tr>

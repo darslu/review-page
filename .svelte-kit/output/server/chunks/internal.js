@@ -456,7 +456,19 @@ const options = {
   root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\r\n<html lang="%paraglide.lang%" dir="%paraglide.textDirection%">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
+    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\r\n<html lang="%paraglide.lang%" dir="%paraglide.textDirection%">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\r\n		' + head + `\r
+	</head>\r
+	<!-- Google tag (gtag.js) -->\r
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WT8PMXRFF3"><\/script>\r
+	<script>\r
+	window.dataLayer = window.dataLayer || [];\r
+	function gtag(){dataLayer.push(arguments);}\r
+	gtag('js', new Date());\r
+\r
+	gtag('config', 'G-WT8PMXRFF3', { 'debug_mode':true });\r
+	<\/script>\r
+	<body data-sveltekit-preload-data="hover">\r
+		<div style="display: contents">` + body + "</div>\r\n	</body>\r\n</html>\r\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -528,7 +540,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "k3umtz"
+  version_hash: "1ouvd98"
 };
 async function get_hooks() {
   return {

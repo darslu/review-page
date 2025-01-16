@@ -9,7 +9,10 @@
 	"/contact": [
 		"src/routes/+layout.js"
 	],
-	"/review": [
+	"/disclaimer": [
+		"src/routes/+layout.js"
+	],
+	"/the-best-mens-boxer-briefs-money-can-buy-2025": [
 		"src/routes/+layout.js"
 	]
 }

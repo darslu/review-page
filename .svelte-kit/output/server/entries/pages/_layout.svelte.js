@@ -1,11 +1,11 @@
-import { E as store_get, F as ensure_array_like, G as attr, I as unsubscribe_stores, J as bind_props, C as pop, A as push, K as head, L as slot, M as fallback, N as rest_props, O as getContext, P as spread_attributes, Q as escape_html, R as sanitize_props, B as setContext, S as spread_props, T as element } from "../../chunks/index.js";
+import { A as push, E as store_get, F as ensure_array_like, G as attr, I as unsubscribe_stores, J as bind_props, C as pop, K as head, L as slot, M as fallback, N as rest_props, O as getContext, P as spread_attributes, Q as escape_html, R as sanitize_props, B as setContext, S as spread_props, T as element } from "../../chunks/index.js";
 import { n as normaliseBase, p as parseRoute, s as serializeRoute, g as getHrefBetween, i as i18n } from "../../chunks/i18n.js";
 import { p as page } from "../../chunks/stores.js";
 import { b as base } from "../../chunks/paths.js";
 import { g as get, w as writable } from "../../chunks/index2.js";
-import { s as setParaglideContext, g as getTranslationFunctions } from "../../chunks/index3.js";
+import { s as setParaglideContext, g as getTranslationFunctions, h as html } from "../../chunks/index3.js";
 import "@inlang/paraglide-js/internal/adapter-utils";
-import { F as Frame, h as html } from "../../chunks/Frame.js";
+import { F as Frame } from "../../chunks/Frame.js";
 import { twMerge } from "tailwind-merge";
 function isExternal(url, currentUrl, base2) {
   const absoluteBase = new URL(base2 ?? "/", currentUrl).pathname;
@@ -355,50 +355,6 @@ function FooterCopyright($$payload, $$props) {
     classSpan,
     classA
   });
-  pop();
-}
-function FooterIcon($$payload, $$props) {
-  const $$sanitized_props = sanitize_props($$props);
-  const $$restProps = rest_props($$sanitized_props, ["href", "ariaLabel", "aClass", "target"]);
-  push();
-  let href = fallback($$props["href"], "");
-  let ariaLabel = fallback($$props["ariaLabel"], "");
-  let aClass = fallback($$props["aClass"], "text-gray-500 hover:text-gray-900 dark:hover:text-white");
-  let target = fallback($$props["target"], () => void 0, true);
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
-  if (href) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<a${spread_attributes({
-      ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-        {
-          ...$$restProps,
-          "href": href,
-          "target": target,
-          "aria-label": ariaLabel,
-          "class": twMerge(aClass, $$sanitized_props.class)
-        },
-        [
-          {
-            attribute_name: "href",
-            lang_attribute_name: "hreflang"
-          }
-        ]
-      )
-    })}><!---->`;
-    slot($$payload, $$props, "default", {}, null);
-    $$payload.out += `<!----></a>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    $$payload.out += `<!---->`;
-    slot($$payload, $$props, "default", {}, null);
-    $$payload.out += `<!---->`;
-  }
-  $$payload.out += `<!--]-->`;
-  bind_props($$props, { href, ariaLabel, aClass, target });
   pop();
 }
 function FooterLink($$payload, $$props) {
@@ -794,7 +750,7 @@ function Header($$payload) {
       NavBrand($$payload2, {
         href: "/",
         children: ($$payload3) => {
-          $$payload3.out += `<img src="images/logo.jpg" class="me-3 h-14 sm:h-20" alt="raitings guide Logo"> <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Ratings guide</span>`;
+          $$payload3.out += `<img src="images/logo.svg" class="me-3 h-10 sm:h-15" alt="worldtopreviews.com logo"> <span class="text-[#191919] self-center whitespace-nowrap text-xl dark:text-white">worldtop<span class="font-bold">reviews</span>.com</span>`;
         },
         $$slots: { default: true }
       });
@@ -804,9 +760,9 @@ function Header($$payload) {
       NavUl($$payload2, {
         children: ($$payload3) => {
           NavLi($$payload3, {
-            href: "/",
+            href: "/the-best-mens-boxer-briefs-money-can-buy-2025",
             children: ($$payload4) => {
-              $$payload4.out += `<!---->Home`;
+              $$payload4.out += `<!---->Merino top 10 brands`;
             },
             $$slots: { default: true }
           });
@@ -815,14 +771,6 @@ function Header($$payload) {
             href: "/about",
             children: ($$payload4) => {
               $$payload4.out += `<!---->About`;
-            },
-            $$slots: { default: true }
-          });
-          $$payload3.out += `<!----> `;
-          NavLi($$payload3, {
-            href: "/review",
-            children: ($$payload4) => {
-              $$payload4.out += `<!---->Merino top 10 brands`;
             },
             $$slots: { default: true }
           });
@@ -843,271 +791,44 @@ function Header($$payload) {
     $$slots: { default: true }
   });
 }
-function DiscordSolid($$payload, $$props) {
-  push();
-  const ctx = getContext("iconCtx") ?? {};
-  const sizes = {
-    xs: "w-3 h-3",
-    sm: "w-4 h-4",
-    md: "w-5 h-5",
-    lg: "w-6 h-6",
-    xl: "w-8 h-8"
-  };
-  let {
-    size = ctx.size || "md",
-    color = ctx.color || "currentColor",
-    title,
-    desc,
-    class: className,
-    ariaLabel = "discord solid",
-    $$slots,
-    $$events,
-    ...restProps
-  } = $$props;
-  let ariaDescribedby = `${title?.id || ""} ${desc?.id || ""}`;
-  const hasDescription = !!(title?.id || desc?.id);
-  $$payload.out += `<svg${spread_attributes(
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: color,
-      ...restProps,
-      class: twMerge("shrink-0", sizes[size], className),
-      "aria-label": ariaLabel,
-      "aria-describedby": hasDescription ? ariaDescribedby : void 0,
-      viewBox: "0 0 24 24"
-    },
-    void 0,
-    void 0,
-    3
-  )}>`;
-  if (title?.id && title.title) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<title${attr("id", title.id)}>${escape_html(title.title)}</title>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]-->`;
-  if (desc?.id && desc.desc) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<desc${attr("id", desc.id)}>${escape_html(desc.desc)}</desc>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--><path d="M18.942 5.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.586 11.586 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3 17.392 17.392 0 0 0-2.868 11.662 15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.638 10.638 0 0 1-1.706-.83c.143-.106.283-.217.418-.331a11.664 11.664 0 0 0 10.118 0c.137.114.277.225.418.331-.544.328-1.116.606-1.71.832a12.58 12.58 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM8.678 14.813a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.929 1.929 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"></path></svg>`;
-  pop();
-}
-function FacebookSolid($$payload, $$props) {
-  push();
-  const ctx = getContext("iconCtx") ?? {};
-  const sizes = {
-    xs: "w-3 h-3",
-    sm: "w-4 h-4",
-    md: "w-5 h-5",
-    lg: "w-6 h-6",
-    xl: "w-8 h-8"
-  };
-  let {
-    size = ctx.size || "md",
-    color = ctx.color || "currentColor",
-    title,
-    desc,
-    class: className,
-    ariaLabel = "facebook solid",
-    $$slots,
-    $$events,
-    ...restProps
-  } = $$props;
-  let ariaDescribedby = `${title?.id || ""} ${desc?.id || ""}`;
-  const hasDescription = !!(title?.id || desc?.id);
-  $$payload.out += `<svg${spread_attributes(
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: color,
-      ...restProps,
-      class: twMerge("shrink-0", sizes[size], className),
-      "aria-label": ariaLabel,
-      "aria-describedby": hasDescription ? ariaDescribedby : void 0,
-      viewBox: "0 0 24 24"
-    },
-    void 0,
-    void 0,
-    3
-  )}>`;
-  if (title?.id && title.title) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<title${attr("id", title.id)}>${escape_html(title.title)}</title>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]-->`;
-  if (desc?.id && desc.desc) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<desc${attr("id", desc.id)}>${escape_html(desc.desc)}</desc>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--><path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"></path></svg>`;
-  pop();
-}
-function GithubSolid($$payload, $$props) {
-  push();
-  const ctx = getContext("iconCtx") ?? {};
-  const sizes = {
-    xs: "w-3 h-3",
-    sm: "w-4 h-4",
-    md: "w-5 h-5",
-    lg: "w-6 h-6",
-    xl: "w-8 h-8"
-  };
-  let {
-    size = ctx.size || "md",
-    color = ctx.color || "currentColor",
-    title,
-    desc,
-    class: className,
-    ariaLabel = "github solid",
-    $$slots,
-    $$events,
-    ...restProps
-  } = $$props;
-  let ariaDescribedby = `${title?.id || ""} ${desc?.id || ""}`;
-  const hasDescription = !!(title?.id || desc?.id);
-  $$payload.out += `<svg${spread_attributes(
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: color,
-      ...restProps,
-      class: twMerge("shrink-0", sizes[size], className),
-      "aria-label": ariaLabel,
-      "aria-describedby": hasDescription ? ariaDescribedby : void 0,
-      viewBox: "0 0 24 24"
-    },
-    void 0,
-    void 0,
-    3
-  )}>`;
-  if (title?.id && title.title) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<title${attr("id", title.id)}>${escape_html(title.title)}</title>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]-->`;
-  if (desc?.id && desc.desc) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<desc${attr("id", desc.id)}>${escape_html(desc.desc)}</desc>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--><path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd"></path></svg>`;
-  pop();
-}
-function TwitterSolid($$payload, $$props) {
-  push();
-  const ctx = getContext("iconCtx") ?? {};
-  const sizes = {
-    xs: "w-3 h-3",
-    sm: "w-4 h-4",
-    md: "w-5 h-5",
-    lg: "w-6 h-6",
-    xl: "w-8 h-8"
-  };
-  let {
-    size = ctx.size || "md",
-    color = ctx.color || "currentColor",
-    title,
-    desc,
-    class: className,
-    ariaLabel = "twitter solid",
-    $$slots,
-    $$events,
-    ...restProps
-  } = $$props;
-  let ariaDescribedby = `${title?.id || ""} ${desc?.id || ""}`;
-  const hasDescription = !!(title?.id || desc?.id);
-  $$payload.out += `<svg${spread_attributes(
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: color,
-      ...restProps,
-      class: twMerge("shrink-0", sizes[size], className),
-      "aria-label": ariaLabel,
-      "aria-describedby": hasDescription ? ariaDescribedby : void 0,
-      viewBox: "0 0 24 24"
-    },
-    void 0,
-    void 0,
-    3
-  )}>`;
-  if (title?.id && title.title) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<title${attr("id", title.id)}>${escape_html(title.title)}</title>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]-->`;
-  if (desc?.id && desc.desc) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<desc${attr("id", desc.id)}>${escape_html(desc.desc)}</desc>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--><path fill-rule="evenodd" d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z" clip-rule="evenodd"></path></svg>`;
-  pop();
-}
 function Footer_1($$payload) {
   Footer($$payload, {
     footerType: "socialmedia",
     children: ($$payload2) => {
-      $$payload2.out += `<div class="md:flex md:justify-between"><div class="mb-6 md:mb-0">`;
+      $$payload2.out += `<div class="md:flex md:justify-between"><div class="mb-6 md:mb-0 flex">`;
       FooterBrand($$payload2, {
         href: "/",
-        src: "images/logo.jpg",
+        src: "images/logo.svg",
         alt: "Flowbite Logo",
-        name: "Ratings guide",
-        imgClass: "h-32"
+        name: "",
+        imgClass: "h-20 ml-5 mr-2"
       });
-      $$payload2.out += `<!----></div> <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3"><div><h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2> `;
+      $$payload2.out += `<!----> <span class="self-center whitespace-nowrap text-xl dark:text-white">worldtop<span class="font-bold">reviews</span>.com</span></div> <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3"><div><h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2> `;
       FooterLinkGroup($$payload2, {
         children: ($$payload3) => {
           FooterLink($$payload3, {
             liClass: "mb-4",
-            href: "/",
+            href: "/the-best-mens-boxer-briefs-money-can-buy-2025",
             children: ($$payload4) => {
-              $$payload4.out += `<!---->Flowbite`;
+              $$payload4.out += `<!---->Merino top 10 brands`;
             },
             $$slots: { default: true }
           });
           $$payload3.out += `<!----> `;
           FooterLink($$payload3, {
             liClass: "mb-4",
-            href: "/",
+            href: "/about",
             children: ($$payload4) => {
-              $$payload4.out += `<!---->Tailwind CSS`;
-            },
-            $$slots: { default: true }
-          });
-          $$payload3.out += `<!---->`;
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----></div> <div><h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2> `;
-      FooterLinkGroup($$payload2, {
-        children: ($$payload3) => {
-          FooterLink($$payload3, {
-            liClass: "mb-4",
-            href: "/",
-            children: ($$payload4) => {
-              $$payload4.out += `<!---->GitHub`;
+              $$payload4.out += `<!---->About`;
             },
             $$slots: { default: true }
           });
           $$payload3.out += `<!----> `;
           FooterLink($$payload3, {
             liClass: "mb-4",
-            href: "/",
+            href: "/contact",
             children: ($$payload4) => {
-              $$payload4.out += `<!---->Discord`;
+              $$payload4.out += `<!---->Contact`;
             },
             $$slots: { default: true }
           });
@@ -1135,55 +856,26 @@ function Footer_1($$payload) {
             },
             $$slots: { default: true }
           });
+          $$payload3.out += `<!----> `;
+          FooterLink($$payload3, {
+            liClass: "mb-4",
+            href: "/disclaimer",
+            children: ($$payload4) => {
+              $$payload4.out += `<!---->Disclaimer`;
+            },
+            $$slots: { default: true }
+          });
           $$payload3.out += `<!---->`;
         },
         $$slots: { default: true }
       });
       $$payload2.out += `<!----></div></div></div> <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"> <div class="sm:flex sm:items-center sm:justify-between">`;
-      FooterCopyright($$payload2, { href: "/", by: "Flowbite™" });
-      $$payload2.out += `<!----> <div class="flex mt-4 space-x-6 rtl:space-x-reverse sm:justify-center sm:mt-0">`;
-      FooterIcon($$payload2, {
+      FooterCopyright($$payload2, {
         href: "/",
-        children: ($$payload3) => {
-          FacebookSolid($$payload3, {
-            class: "w-5 h-5 text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white"
-          });
-        },
-        $$slots: { default: true }
+        by: "WorldTopReviews",
+        spanClass: "ml-5"
       });
-      $$payload2.out += `<!----> `;
-      FooterIcon($$payload2, {
-        href: "/",
-        children: ($$payload3) => {
-          DiscordSolid($$payload3, {
-            class: "w-5 h-5 text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white"
-          });
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----> `;
-      FooterIcon($$payload2, {
-        href: "/",
-        children: ($$payload3) => {
-          TwitterSolid($$payload3, {
-            class: "w-5 h-5 text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white"
-          });
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----> `;
-      FooterIcon($$payload2, {
-        href: "/",
-        children: ($$payload3) => {
-          GithubSolid($$payload3, {
-            class: "w-5 h-5 text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white"
-          });
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----> `;
-      FooterIcon($$payload2, { href: "/" });
-      $$payload2.out += `<!----></div></div>`;
+      $$payload2.out += `<!----> <div class="flex mt-4 space-x-6 rtl:space-x-reverse sm:justify-center sm:mt-0"></div></div>`;
     },
     $$slots: { default: true }
   });

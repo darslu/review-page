@@ -9,12 +9,34 @@
       "_paths.js"
     ]
   },
+  "_Avatar.js": {
+    "file": "chunks/Avatar.js",
+    "name": "Avatar",
+    "imports": [
+      "_index.js",
+      "_index3.js"
+    ]
+  },
   "_Frame.js": {
     "file": "chunks/Frame.js",
     "name": "Frame",
     "imports": [
       "_index.js",
       "_index3.js"
+    ]
+  },
+  "_TestingFeatures.js": {
+    "file": "chunks/TestingFeatures.js",
+    "name": "TestingFeatures",
+    "imports": [
+      "_index.js",
+      "_index3.js",
+      "_Avatar.js",
+      "_Frame.js",
+      "_index2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/TestingFeatures.BpoHteS1.css"
     ]
   },
   "_constants.js": {
@@ -130,7 +152,7 @@
       "_Frame.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.Be6l3Vk2.css"
+      "_app/immutable/assets/_layout.Brkz3zP9.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -139,8 +161,7 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js",
-      "_index3.js"
+      "_TestingFeatures.js"
     ]
   },
   "src/routes/about/+page.svelte": {
@@ -150,28 +171,38 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_index3.js"
+      "_index3.js",
+      "_Avatar.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.C5EU-uZF.css"
     ]
   },
   "src/routes/contact/+page.svelte": {
     "file": "entries/pages/contact/_page.svelte.js",
     "name": "entries/pages/contact/_page.svelte",
     "src": "src/routes/contact/+page.svelte",
-    "isEntry": true
-  },
-  "src/routes/review/+page.svelte": {
-    "file": "entries/pages/review/_page.svelte.js",
-    "name": "entries/pages/review/_page.svelte",
-    "src": "src/routes/review/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js",
-      "_Frame.js",
-      "_index2.js",
-      "_index3.js"
+      "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.TldeJoQ5.css"
+      "_app/immutable/assets/_page.DbkomTKF.css"
+    ]
+  },
+  "src/routes/disclaimer/+page.svelte": {
+    "file": "entries/pages/disclaimer/_page.svelte.js",
+    "name": "entries/pages/disclaimer/_page.svelte",
+    "src": "src/routes/disclaimer/+page.svelte",
+    "isEntry": true
+  },
+  "src/routes/the-best-mens-boxer-briefs-money-can-buy-2025/+page.svelte": {
+    "file": "entries/pages/the-best-mens-boxer-briefs-money-can-buy-2025/_page.svelte.js",
+    "name": "entries/pages/the-best-mens-boxer-briefs-money-can-buy-2025/_page.svelte",
+    "src": "src/routes/the-best-mens-boxer-briefs-money-can-buy-2025/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_TestingFeatures.js"
     ]
   }
 }

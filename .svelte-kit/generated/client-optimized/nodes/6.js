@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/the-best-mens-boxer-briefs-money-can-buy-2025/+page.svelte";

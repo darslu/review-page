@@ -15,7 +15,7 @@
 		"test:e2e": "playwright test",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"deploy": "npm run build && gh-pages -d build -t true"
+		"deploy": "npm run build && gh-pages -d build -t true --cname worldtopreviews.com"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.9.0",
@@ -61,6 +61,7 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@sveltejs/adapter-static": "^3.0.6",
+		"emailjs-com": "^3.2.0",
 		"flowbite-svelte": "^0.47.2",
 		"flowbite-svelte-blocks": "^1.1.4",
 		"flowbite-svelte-icons": "^2.0.2",

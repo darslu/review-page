@@ -1,11 +1,6 @@
-import { N as rest_props, B as setContext, M as fallback, T as element, L as slot, P as spread_attributes, J as bind_props, C as pop, R as sanitize_props, A as push } from "./index.js";
+import { N as rest_props, A as push, B as setContext, M as fallback, T as element, L as slot, P as spread_attributes, J as bind_props, C as pop, R as sanitize_props } from "./index.js";
 import { g as getTranslationFunctions } from "./index3.js";
 import { twMerge } from "tailwind-merge";
-function html(value) {
-  var html2 = String(value ?? "");
-  var open = "<!---->";
-  return open + html2 + "<!---->";
-}
 const bgColors = {
   gray: "bg-gray-50 dark:bg-gray-800",
   red: "bg-red-50 dark:bg-gray-800",
@@ -224,6 +219,5 @@ function Frame($$payload, $$props) {
   pop();
 }
 export {
-  Frame as F,
-  html as h
+  Frame as F
 };

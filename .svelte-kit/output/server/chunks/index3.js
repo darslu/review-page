@@ -1,5 +1,10 @@
 import { N as NO_TRANSLATE_ATTRIBUTE } from "./constants.js";
 import { B as setContext, O as getContext } from "./index.js";
+function html(value) {
+  var html2 = String(value ?? "");
+  var open = "<!---->";
+  return open + html2 + "<!---->";
+}
 const PARAGLIDE_CONTEXT_KEY = {};
 const getParaglideContext = () => {
   return (
@@ -35,5 +40,6 @@ function getTranslationFunctions() {
 }
 export {
   getTranslationFunctions as g,
+  html as h,
   setParaglideContext as s
 };

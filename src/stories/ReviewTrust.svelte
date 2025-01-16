@@ -1,172 +1,105 @@
 <script lang="ts">
-	import {
-		Section,
-		PricingBodyHead,
-		PricingCard,
-		PricingItemWrapper,
-		PricingHead,
-		PricingItem
-	} from 'flowbite-svelte-blocks';
-	import { AccordionItem, Accordion, Button } from 'flowbite-svelte';
-	const items = Array(3);
+
 </script>
 
-<Section name="pricing">
-	<PricingHead h2Class="flex justify-center items-center mb-6">
-		<svelte:fragment slot="h2"
-			><div class="flex flex-col md:flex-row">
-				<span class="flex items-end text-4xl">Best reviews in</span>
-				<img src="images/Trustpilot_Logo__2022__svg.webp" class="ml-3 h-12" alt="Trustpilot" />
-			</div></svelte:fragment
-		>
-		<svelte:fragment slot="paragraph"
-			>Here at Flowbite we focus on markets where technology, innovation, and capital can unlock
-			long-term value and drive economic growth.</svelte:fragment
-		>
-	</PricingHead>
-	<div class="space-y-8 sm:gap-6 lg:grid lg:grid-cols-3 lg:space-y-0 xl:gap-10">
-		<PricingCard>
-			<PricingBodyHead>
-				<svelte:fragment slot="h3">Menique</svelte:fragment>
-				<svelte:fragment slot="paragraph"
-					>Relevant for multiple users, extended & premium support.</svelte:fragment
-				>
-				<svelte:fragment slot="price">
-					<span class="mr-2 text-5xl font-extrabold">4.7</span>
-					<span class="text-gray-500 dark:text-gray-400">(1551 reviews)</span>
-				</svelte:fragment>
-			</PricingBodyHead>
-			<PricingItemWrapper>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>Super soft 100% merino</span>
-				</PricingItem>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>Premium quality</span>
-				</PricingItem>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>Minimalist style</span>
-				</PricingItem>
-				<PricingItem class="text-red-500 dark:text-red-400">
-					<span>Limited sizing options</span>
-				</PricingItem>
-				<PricingItem class="text-red-500 dark:text-red-400">
-					<span>Not always in stock</span>
-				</PricingItem>
+<h2
+	class="mb-4 mb-5 mt-10 text-center text-2xl font-bold dark:text-white md:mb-16 md:mt-16 md:text-3xl"
+>
+	Top 5 Boxer Briefs: Test Results
+</h2>
 
-				<svelte:fragment slot="btn">
-					<Button color="red" href="https://menique.com">Get started</Button>
-				</svelte:fragment>
-			</PricingItemWrapper>
-		</PricingCard>
-		<PricingCard>
-			<PricingBodyHead>
-				<svelte:fragment slot="h3">Allbirds</svelte:fragment>
-				<svelte:fragment slot="paragraph"
-					>Best option for personal use & for your next project.</svelte:fragment
-				>
-				<svelte:fragment slot="price">
-					<span class="mr-2 text-5xl font-extrabold">4.3</span>
-					<span class="text-gray-500 dark:text-gray-400">(2026 reviews)</span>
-				</svelte:fragment>
-			</PricingBodyHead>
-			<PricingItemWrapper>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>Individual configuration</span>
-				</PricingItem>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>No setup, or hidden fees</span>
-				</PricingItem>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>Team size: <span class="font-semibold">1 developer</span></span>
-				</PricingItem>
-				<PricingItem class="text-red-500 dark:text-red-400">
-					<span>Premium support: <span class="font-semibold">6 months</span></span>
-				</PricingItem>
-				<PricingItem class="text-red-500 dark:text-red-400">
-					<span>Free updates: <span class="font-semibold">6 months</span></span>
-				</PricingItem>
 
-				<svelte:fragment slot="btn">
-					<Button color="red">Get started</Button>
-				</svelte:fragment>
-			</PricingItemWrapper>
-		</PricingCard>
 
-		<PricingCard>
-			<PricingBodyHead>
-				<svelte:fragment slot="h3">Icebreaker</svelte:fragment>
-				<svelte:fragment slot="paragraph"
-					>Best for large scale uses and extended redistribution rights.</svelte:fragment
-				>
-				<svelte:fragment slot="price">
-					<span class="mr-2 text-5xl font-extrabold">4.0</span>
-					<span class="text-gray-500 dark:text-gray-400">(1526 reviews)</span>
-				</svelte:fragment>
-			</PricingBodyHead>
-			<PricingItemWrapper>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>Individual configuration</span>
-				</PricingItem>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>No setup, or hidden fees</span>
-				</PricingItem>
-				<PricingItem class="text-green-500 dark:text-green-400">
-					<span>Team size: <span class="font-semibold">100+ developer</span></span>
-				</PricingItem>
-				<PricingItem class="text-red-500 dark:text-red-400">
-					<span>Premium support: <span class="font-semibold">36 months</span></span>
-				</PricingItem>
-				<PricingItem class="text-red-500 dark:text-red-400">
-					<span>Free updates: <span class="font-semibold">36 months</span></span>
-				</PricingItem>
+<div class="max-w-[1600px] mx-auto">
+	<div class="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:gap-8 md:gap-3 lg:overflow-visible lg:grid lg:grid-cols-5 mx-5">
+	  <!-- Card 1 -->
+	  <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none relative">
+		<img src="images/recommend.svg" alt="Winner badge" class="mx-auto h-8 recommended-position" />
 
-				<svelte:fragment slot="btn">
-					<Button color="red">Get started</Button>
-				</svelte:fragment>
-			</PricingItemWrapper>
-		</PricingCard>
+		<div class="space-y-6 p-6 border-4 rounded-md border-[#5DCE8B] min-h-[400px] text-center ">
+			<img src="images/menique-logo.png" alt="Menique" class="mx-auto h-8 mt-[72px] mb-4" />
+		  <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">
+			100% Merino Boxer Briefs
+		  </span>
+		  <div class="flex justify-center text-[#5DCE8B] dark:text-white mb-10 text-center">
+			<span class="text-5xl font-extrabold tracking-tight text-center">9.8</span>
+		  </div>
+		  <div class="text-xl font-medium text-[#191919] text-center mb-5">£27.00</div>
+		  <div>
+			<a href="https://menique.com/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs" class="w-full rounded-md bg-[#5DCE8B] text-white px-14 py-2">GET DEAL</a>
+		  </div>
+		</div>
+	  </div>
+  
+	  <!-- Card 2 -->
+	  <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none">
+		<div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center">
+			<img src="images/smartwool-logo.png" alt="Smartwool" class="mx-auto h-8 mt-[72px] mb-4" />
+		  <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">
+			Merino Boxer Briefs
+		  </span>
+		  <div class="flex justify-center text-[#FAB907] dark:text-white mb-10 text-center">
+			<span class="text-5xl font-extrabold tracking-tight text-center">8.6</span>
+		  </div>
+		  <div class="text-xl font-medium text-[#191919] text-center mb-5">£45</div>
+		  <!-- <button class="w-full rounded-md bg-[#5DCE8B] text-white py-2">GET DEAL</button> -->
+		</div>
+	  </div>
+  
+	  <!-- Card 3 -->
+	  <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none">
+		<div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center">
+			<img src="images/icebreaker-logo.png" alt="Icebreaker" class="mx-auto h-8 mt-[72px] mb-4" />
+		  <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">
+			Anatomica Merino Boxers
+		  </span>
+		  <div class="flex justify-center text-[#FAB907] dark:text-white mb-10 text-center">
+			<span class="text-5xl font-extrabold tracking-tight text-center">8.2</span>
+		  </div>
+		  <div class="text-xl font-medium text-[#191919] text-center mb-5">£40</div>
+		  <!-- <button class="w-full rounded-md bg-[#5DCE8B] text-white py-2">GET DEAL</button> -->
+		</div>
+	  </div>
+
+	   <!-- Card 4 -->
+	   <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none">
+		<div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center">
+			<img src="images/patagonia-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[72px] mb-4" />
+		  <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">
+			Sender Boxer Briefs 6"
+		  </span>
+		  <div class="flex justify-center text-[#EA3D3D] dark:text-white mb-10 text-center">
+			<span class="text-5xl font-extrabold tracking-tight text-center">7.6</span>
+		  </div>
+		  <div class="text-xl font-medium text-[#191919] text-center mb-5">£35</div>
+		  <!-- <button class="w-full rounded-md bg-[#5DCE8B] text-white py-2">GET DEAL</button> -->
+		</div>
+	  </div>
+
+	   <!-- Card 5 -->
+	   <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none">
+		<div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center">
+			<img src="images/lululemon-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[72px] mb-4" />
+		  <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">
+			Rapid Vent Tech Boxer 5"
+		  </span>
+		  <div class="flex justify-center text-[#EA3D3D] dark:text-white mb-10 text-center">
+			<span class="text-5xl font-extrabold tracking-tight text-center">7.2</span>
+		  </div>
+		  <div class="text-xl font-medium text-[#191919] text-center mb-5">£20</div>
+		  <!-- <button class="w-full rounded-md bg-[#5DCE8B] text-white py-2">GET DEAL</button> -->
+		</div>
+	  </div>
 	</div>
-</Section>
+  </div>
+  
+<style>
+	.recommended-position {
+		position: absolute;
+		top: -14px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 9999;
+	}
 
-<div class="container mx-auto px-3 px-md-60 mb-10">
-	<h3 class="mb-5 text-center text-3xl">Another brands...</h3>
-	<Accordion multiple>
-		<AccordionItem bind:open={items[0]}>
-			<span slot="header">Smartwool
-                <PricingItem class="text-green-500 dark:text-green-400">
-					<span>4.4 (1600reviews)</span>
-				</PricingItem>
-            </span>
-			<p class="mb-2 text-gray-500 dark:text-gray-400">
-				U.S. brand known for comfortable and durable merino products, especially socks.
-			</p>
-		</AccordionItem>
-		<AccordionItem bind:open={items[1]}>
-			<div slot="header">
-				Patagonia 
-                <PricingItem class="text-green-500 dark:text-green-400">
-					<span>4.3 (600reviews)</span>
-				</PricingItem>
-			</div>
-			<p class="mb-2 text-gray-500 dark:text-gray-400">
-				Renowned for outdoor gear, with merino blends for durability and sustainability.
-			</p>
-		</AccordionItem>
-		<AccordionItem bind:open={items[2]}>
-			<div slot="header">Minus33
-                <PricingItem class="text-green-500 dark:text-green-400">
-					<span>4.1 (400reviews)</span>
-				</PricingItem>
-            </div>
-			<p>Affordable and versatile merino clothing focused on quality and everyday wear.</p>
-		</AccordionItem>
-		<AccordionItem bind:open={items[2]}>
-			<div slot="header">Darn Tough
-                <PricingItem class="text-yellow-500 dark:text-yellow-400">
-					<span>4.2 (300reviews)</span>
-				</PricingItem>
-            </div>
-			<p>Vermont-based, known for durable merino wool socks with a lifetime warranty.</p>
-		</AccordionItem>
-	</Accordion>
-</div>
+</style>

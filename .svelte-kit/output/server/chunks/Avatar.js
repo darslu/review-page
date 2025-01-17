@@ -1,5 +1,4 @@
-import { U as sanitize_slots, N as rest_props, A as push, M as fallback, P as spread_attributes, L as slot, J as bind_props, C as pop, R as sanitize_props, T as element, G as attr, S as spread_props, V as stringify } from "./index.js";
-import { g as getTranslationFunctions } from "./index3.js";
+import { a8 as sanitize_slots, a0 as rest_props, P as push, $ as fallback, a2 as spread_attributes, a3 as clsx, _ as slot, Y as bind_props, S as pop, a5 as sanitize_props, a7 as element, W as attr, a6 as spread_props, a9 as stringify } from "./index.js";
 import { twMerge } from "tailwind-merge";
 function Indicator($$payload, $$props) {
   const $$slots = sanitize_slots($$props);
@@ -69,7 +68,7 @@ function Indicator($$payload, $$props) {
   };
   let dotClass;
   dotClass = twMerge("flex-shrink-0", rounded ? "rounded" : "rounded-full", border && "border-2 border-white dark:border-gray-800", sizes[size], colors[color], $$slots.default && "inline-flex items-center justify-center", placement && "absolute " + placements[placement], placement && offset && offsets[placement], $$sanitized_props.class);
-  $$payload.out += `<div${spread_attributes({ ...$$restProps, class: dotClass })}><!---->`;
+  $$payload.out += `<div${spread_attributes({ ...$$restProps, class: clsx(dotClass) })}><!---->`;
   slot($$payload, $$props, "default", {}, null);
   $$payload.out += `<!----></div>`;
   bind_props($$props, {
@@ -113,11 +112,6 @@ function Avatar($$payload, $$props) {
     none: ""
   };
   let avatarClass;
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   dot = dot && {
     placement: "top-right",
     color: "gray",
@@ -127,49 +121,20 @@ function Avatar($$payload, $$props) {
   avatarClass = twMerge(rounded ? "rounded" : "rounded-full", border && "p-1 ring-2 ring-gray-300 dark:ring-gray-500", sizes[size], stacked && "border-2 -ms-4 border-white dark:border-gray-800", "bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 object-cover", $$sanitized_props.class);
   if (!src || !!href || $$slots.default || dot) {
     $$payload.out += "<!--[-->";
-    const $$tag = href ? "a" : "div";
     element(
       $$payload,
-      $$tag,
+      href ? "a" : "div",
       () => {
         $$payload.out += `${spread_attributes({
-          ...`${href ? "a" : "div"}` === "button" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-            {
-              "href": href,
-              ...$$restProps,
-              "class": `relative flex justify-center items-center ${avatarClass}`
-            },
-            [{ attribute_name: "formaction" }]
-          ) : `${href ? "a" : "div"}` === "form" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-            {
-              "href": href,
-              ...$$restProps,
-              "class": `relative flex justify-center items-center ${avatarClass}`
-            },
-            [{ attribute_name: "action" }]
-          ) : `${href ? "a" : "div"}` === "a" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-            {
-              "href": href,
-              ...$$restProps,
-              "class": `relative flex justify-center items-center ${avatarClass}`
-            },
-            [
-              {
-                attribute_name: "href",
-                lang_attribute_name: "hreflang"
-              }
-            ]
-          ) : {
-            "href": href,
-            ...$$restProps,
-            "class": `relative flex justify-center items-center ${avatarClass}`
-          }
+          href,
+          ...$$restProps,
+          class: `relative flex justify-center items-center ${stringify(avatarClass)}`
         })}`;
       },
       () => {
         if (src) {
           $$payload.out += "<!--[-->";
-          $$payload.out += `<img${attr("alt", alt)}${attr("src", src)}${attr("class", rounded ? "rounded" : "rounded-full")}>`;
+          $$payload.out += `<img${attr("alt", alt)}${attr("src", src)}${attr("class", clsx(rounded ? "rounded" : "rounded-full"))}>`;
         } else {
           $$payload.out += "<!--[!-->";
           $$payload.out += `<!---->`;
@@ -194,7 +159,7 @@ function Avatar($$payload, $$props) {
       alt,
       src,
       ...$$restProps,
-      class: avatarClass
+      class: clsx(avatarClass)
     })} onload="this.__e=event" onerror="this.__e=event">`;
   }
   $$payload.out += `<!--]-->`;

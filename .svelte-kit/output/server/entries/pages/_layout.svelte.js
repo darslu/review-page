@@ -1,16 +1,21 @@
-import { A as push, E as store_get, F as ensure_array_like, G as attr, I as unsubscribe_stores, J as bind_props, C as pop, K as head, L as slot, M as fallback, N as rest_props, O as getContext, P as spread_attributes, Q as escape_html, R as sanitize_props, B as setContext, S as spread_props, T as element } from "../../chunks/index.js";
-import { n as normaliseBase, p as parseRoute, s as serializeRoute, g as getHrefBetween, i as i18n } from "../../chunks/i18n.js";
-import { p as page } from "../../chunks/stores.js";
+import "clsx";
+import { Q as setContext, P as push, T as store_get, V as ensure_array_like, W as attr, X as unsubscribe_stores, Y as bind_props, S as pop, Z as head, _ as slot, $ as fallback, a0 as rest_props, a1 as getContext, a2 as spread_attributes, a3 as clsx, a4 as escape_html, a5 as sanitize_props, a6 as spread_props, a7 as element } from "../../chunks/index.js";
+import { n as normaliseBase, p as page, a as parseRoute, s as serializeRoute, g as getHrefBetween, i as i18n } from "../../chunks/i18n.js";
 import { b as base } from "../../chunks/paths.js";
 import { g as get, w as writable } from "../../chunks/index2.js";
-import { s as setParaglideContext, g as getTranslationFunctions, h as html } from "../../chunks/index3.js";
+import "../../chunks/client.js";
 import "@inlang/paraglide-js/internal/adapter-utils";
 import { F as Frame } from "../../chunks/Frame.js";
 import { twMerge } from "tailwind-merge";
+import { h as html } from "../../chunks/html.js";
 function isExternal(url, currentUrl, base2) {
-  const absoluteBase = new URL(base2 ?? "/", currentUrl).pathname;
+  const absoluteBase = new URL(base2, currentUrl).pathname;
   return url.origin !== currentUrl.origin || !url.pathname.startsWith(absoluteBase);
 }
+const PARAGLIDE_CONTEXT_KEY = {};
+const setParaglideContext = (context) => {
+  setContext(PARAGLIDE_CONTEXT_KEY, context);
+};
 function AlternateLinks($$payload, $$props) {
   push();
   var $$store_subs;
@@ -143,29 +148,14 @@ function ToolbarButton($$payload, $$props) {
     md: "w-5 h-5",
     lg: "w-5 h-5"
   };
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   buttonClass = twMerge("focus:outline-none whitespace-normal", sizing[size], colors[color], color === "default" && (background ? "dark:hover:bg-gray-600" : "dark:hover:bg-gray-700"), $$sanitized_props.class);
   if (href) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<a${spread_attributes({
-      ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-        {
-          "href": href,
-          ...$$restProps,
-          "class": buttonClass,
-          "aria-label": ariaLabel ?? name
-        },
-        [
-          {
-            attribute_name: "href",
-            lang_attribute_name: "hreflang"
-          }
-        ]
-      )
+      href,
+      ...$$restProps,
+      class: clsx(buttonClass),
+      "aria-label": ariaLabel ?? name
     })}>`;
     if (name) {
       $$payload.out += "<!--[-->";
@@ -179,15 +169,10 @@ function ToolbarButton($$payload, $$props) {
   } else {
     $$payload.out += "<!--[!-->";
     $$payload.out += `<button${spread_attributes({
-      ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-        {
-          "type": `button`,
-          ...$$restProps,
-          "class": buttonClass,
-          "aria-label": ariaLabel ?? name
-        },
-        [{ attribute_name: "formaction" }]
-      )
+      type: "button",
+      ...$$restProps,
+      class: clsx(buttonClass),
+      "aria-label": ariaLabel ?? name
     })}>`;
     if (name) {
       $$payload.out += "<!--[-->";
@@ -209,7 +194,10 @@ function Footer($$payload, $$props) {
   push();
   let footerType = fallback($$props["footerType"], () => void 0, true);
   let footerClass = twMerge(footerType === "sitemap" && "bg-gray-800", footerType === "socialmedia" && "p-4 bg-white sm:p-6 dark:bg-gray-800", footerType === "logo" && "p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-800", footerType === "default" && "p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800", $$sanitized_props.class);
-  $$payload.out += `<footer${spread_attributes({ ...$$restProps, class: footerClass })}><!---->`;
+  $$payload.out += `<footer${spread_attributes({
+    ...$$restProps,
+    class: clsx(footerClass)
+  })}><!---->`;
   slot($$payload, $$props, "default", {}, null);
   $$payload.out += `<!----></footer>`;
   bind_props($$props, { footerType });
@@ -245,34 +233,24 @@ function FooterBrand($$payload, $$props) {
   let aCls = twMerge(aClass, classA);
   let spanCls = twMerge(spanClass, classSpan);
   let imgCls = twMerge(imgClass, classImg);
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   if (href) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<a${spread_attributes({
-      ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-        {
-          ...$$restProps,
-          "href": href,
-          "target": target,
-          "class": aCls
-        },
-        [
-          {
-            attribute_name: "href",
-            lang_attribute_name: "hreflang"
-          }
-        ]
-      )
-    })}><img${attr("src", src)}${attr("class", imgCls)}${attr("alt", alt)}> <span${attr("class", spanCls)}>${escape_html(name)}</span> <!---->`;
+      ...$$restProps,
+      href,
+      target,
+      class: clsx(aCls)
+    })}><img${attr("src", src)}${attr("class", clsx(imgCls))}${attr("alt", alt)}> <span${attr("class", clsx(spanCls))}>${escape_html(name)}</span> <!---->`;
     slot($$payload, $$props, "default", {}, null);
     $$payload.out += `<!----></a>`;
   } else {
     $$payload.out += "<!--[!-->";
-    $$payload.out += `<img${spread_attributes({ ...$$restProps, src, class: imgCls, alt })} onload="this.__e=event" onerror="this.__e=event">`;
+    $$payload.out += `<img${spread_attributes({
+      ...$$restProps,
+      src,
+      class: clsx(imgCls),
+      alt
+    })} onload="this.__e=event" onerror="this.__e=event">`;
   }
   $$payload.out += `<!--]-->`;
   bind_props($$props, {
@@ -315,29 +293,14 @@ function FooterCopyright($$payload, $$props) {
   let classA = fallback($$props["classA"], "");
   let spanCls = twMerge(spanClass, classSpan);
   let aCls = twMerge(aClass, classA);
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
-  $$payload.out += `<span${attr("class", spanCls)}>© ${escape_html(year)} `;
+  $$payload.out += `<span${attr("class", clsx(spanCls))}>© ${escape_html(year)} `;
   if (href) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<a${spread_attributes({
-      ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-        {
-          ...$$restProps,
-          "href": href,
-          "target": target,
-          "class": aCls
-        },
-        [
-          {
-            attribute_name: "href",
-            lang_attribute_name: "hreflang"
-          }
-        ]
-      )
+      ...$$restProps,
+      href,
+      target,
+      class: clsx(aCls)
     })}>${escape_html(by)}</a>`;
   } else {
     $$payload.out += "<!--[!-->";
@@ -376,26 +339,11 @@ function FooterLink($$payload, $$props) {
   let classA = fallback($$props["classA"], "");
   let liCls = twMerge(liClass, classLi);
   let aCls = twMerge(aClass, classA);
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
-  $$payload.out += `<li${attr("class", liCls)}><a${spread_attributes({
-    ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-      {
-        ...$$restProps,
-        "href": href,
-        "class": aCls,
-        "target": target
-      },
-      [
-        {
-          attribute_name: "href",
-          lang_attribute_name: "hreflang"
-        }
-      ]
-    )
+  $$payload.out += `<li${attr("class", clsx(liCls))}><a${spread_attributes({
+    ...$$restProps,
+    href,
+    class: clsx(aCls),
+    target
   })}><!---->`;
   slot($$payload, $$props, "default", {}, null);
   $$payload.out += `<!----></a></li>`;
@@ -416,7 +364,7 @@ function FooterLinkGroup($$payload, $$props) {
   let ulClass = fallback($$props["ulClass"], "text-gray-600 dark:text-gray-400");
   $$payload.out += `<ul${spread_attributes({
     ...$$restProps,
-    class: twMerge(ulClass, $$sanitized_props.class)
+    class: clsx(twMerge(ulClass, $$sanitized_props.class))
   })}><!---->`;
   slot($$payload, $$props, "default", {}, null);
   $$payload.out += `<!----></ul>`;
@@ -430,7 +378,7 @@ function NavContainer($$payload, $$props) {
   let fluid = fallback($$props["fluid"], false);
   $$payload.out += `<div${spread_attributes({
     ...$$restProps,
-    class: twMerge("mx-auto flex flex-wrap justify-between items-center ", fluid ? "w-full" : "container", $$sanitized_props.class)
+    class: clsx(twMerge("mx-auto flex flex-wrap justify-between items-center ", fluid ? "w-full" : "container", $$sanitized_props.class))
   })}><!---->`;
   slot($$payload, $$props, "default", {}, null);
   $$payload.out += `<!----></div>`;
@@ -489,25 +437,10 @@ function NavBrand($$payload, $$props) {
   const $$restProps = rest_props($$sanitized_props, ["href"]);
   push();
   let href = fallback($$props["href"], "");
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   $$payload.out += `<a${spread_attributes({
-    ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-      {
-        "href": href,
-        ...$$restProps,
-        "class": twMerge("flex items-center", $$sanitized_props.class)
-      },
-      [
-        {
-          attribute_name: "href",
-          lang_attribute_name: "hreflang"
-        }
-      ]
-    )
+    href,
+    ...$$restProps,
+    class: clsx(twMerge("flex items-center", $$sanitized_props.class))
   })}><!---->`;
   slot($$payload, $$props, "default", {}, null);
   $$payload.out += `<!----></a>`;
@@ -546,7 +479,7 @@ function Menu($$payload, $$props) {
       tabindex: "0",
       width: size,
       height: size,
-      class: $$sanitized_props.class,
+      class: clsx($$sanitized_props.class),
       ...$$restProps,
       "aria-label": ariaLabel,
       fill: "none",
@@ -597,55 +530,18 @@ function NavLi($$payload, $$props) {
   activeUrlStore.subscribe((value) => {
     navUrl = value;
   });
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   active = navUrl ? href === navUrl : false;
   liClass = twMerge("block py-2 pe-4 ps-3 md:p-0 rounded md:border-0", active ? activeClass ?? context.activeClass : nonActiveClass ?? context.nonActiveClass, $$sanitized_props.class);
-  const $$tag = href ? "a" : "div";
   $$payload.out += `<li>`;
   element(
     $$payload,
-    $$tag,
+    href ? "a" : "div",
     () => {
       $$payload.out += `${spread_attributes({
-        ...`${href ? "a" : "div"}` === "button" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-          {
-            "role": href ? void 0 : "link",
-            "href": href,
-            ...$$restProps,
-            "class": liClass
-          },
-          [{ attribute_name: "formaction" }]
-        ) : `${href ? "a" : "div"}` === "form" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-          {
-            "role": href ? void 0 : "link",
-            "href": href,
-            ...$$restProps,
-            "class": liClass
-          },
-          [{ attribute_name: "action" }]
-        ) : `${href ? "a" : "div"}` === "a" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-          {
-            "role": href ? void 0 : "link",
-            "href": href,
-            ...$$restProps,
-            "class": liClass
-          },
-          [
-            {
-              attribute_name: "href",
-              lang_attribute_name: "hreflang"
-            }
-          ]
-        ) : {
-          "role": href ? void 0 : "link",
-          "href": href,
-          ...$$restProps,
-          "class": liClass
-        }
+        role: href ? void 0 : "link",
+        href,
+        ...$$restProps,
+        class: clsx(liClass)
       })}`;
     },
     () => {
@@ -702,7 +598,7 @@ function NavUl($$payload, $$props) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<div${spread_attributes({
       ...$$restProps,
-      class: _divClass,
+      class: clsx(_divClass),
       role: "button",
       tabindex: "0"
     })}>`;
@@ -724,9 +620,9 @@ function NavUl($$payload, $$props) {
     $$payload.out += "<!--[!-->";
     $$payload.out += `<div${spread_attributes({
       ...$$restProps,
-      class: _divClass,
+      class: clsx(_divClass),
       hidden: _hidden
-    })}><ul${attr("class", _ulClass)}><!---->`;
+    })}><ul${attr("class", clsx(_ulClass))}><!---->`;
     slot($$payload, $$props, "default", {}, null);
     $$payload.out += `<!----></ul></div>`;
   }
@@ -762,7 +658,7 @@ function Header($$payload) {
           NavLi($$payload3, {
             href: "/the-best-mens-boxer-briefs-money-can-buy-2025",
             children: ($$payload4) => {
-              $$payload4.out += `<!---->Merino top 10 brands`;
+              $$payload4.out += `<!---->Top 5 Men's Boxers of 2025`;
             },
             $$slots: { default: true }
           });
@@ -810,7 +706,7 @@ function Footer_1($$payload) {
             liClass: "mb-4",
             href: "/the-best-mens-boxer-briefs-money-can-buy-2025",
             children: ($$payload4) => {
-              $$payload4.out += `<!---->Merino top 10 brands`;
+              $$payload4.out += `<!---->Top 5 Men's Boxers of 2025`;
             },
             $$slots: { default: true }
           });

@@ -6,8 +6,8 @@
 		{
 			title: "Menique Men's 100% Merino Boxer Briefs",
 			productUrl: [
-				'https://menique.com/products/mens-merino-160gsm-short-boxer-briefs',
-				'https://www.amazon.co.uk/menique-Merino-Short-Briefs-Regular/dp/B0CPYCB6CR/'
+				'https://menique.co.uk/products/mens-merino-160gsm-short-boxer-briefs',
+				'https://www.amazon.co.uk/dp/B0CPYDNSY6?maas=maas_adg_2E0B32A7D10EBE89C8D39E5655E011A9_afap_abs&ref_=aa_maas&tag=maas'
 			],
 			linkTitle: ['£27.00 Official Dealer', '£21.95 Amazon'],
 			overallScore: 9.8,

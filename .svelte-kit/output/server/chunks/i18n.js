@@ -1,7 +1,8 @@
-import { p as page } from "./stores.js";
+import "clsx";
+import "./client.js";
 import { negotiateLanguagePreferences, bestMatch, resolveRoute } from "@inlang/paraglide-js/internal/adapter-utils";
 import { b as base } from "./paths.js";
-import { L as LANG_COOKIE_NAME } from "./constants.js";
+import { a1 as getContext } from "./index.js";
 import { g as get } from "./index2.js";
 let _onSetLanguageTag;
 const sourceLanguageTag = "en";
@@ -46,6 +47,27 @@ const runtime = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   setLanguageTag,
   sourceLanguageTag
 }, Symbol.toStringTag, { value: "Module" }));
+const getStores = () => {
+  const stores$1 = getContext("__svelte__");
+  return {
+    /** @type {typeof page} */
+    page: {
+      subscribe: stores$1.page.subscribe
+    },
+    /** @type {typeof navigating} */
+    navigating: {
+      subscribe: stores$1.navigating.subscribe
+    },
+    /** @type {typeof updated} */
+    updated: stores$1.updated
+  };
+};
+const page = {
+  subscribe(fn) {
+    const store = getStores().page;
+    return store.subscribe(fn);
+  }
+};
 function normaliseBase$1(baseValue, currentUrl) {
   if (baseValue === "")
     return "";
@@ -92,6 +114,7 @@ function getHrefBetween(from, to) {
   }
   return to.pathname + to.search + to.hash;
 }
+const LANG_COOKIE_NAME = "paraglide_lang";
 class ALSContext {
   ctx;
   constructor(ALS) {
@@ -413,9 +436,10 @@ function normaliseBase(base2) {
 }
 const i18n = createI18n(runtime);
 export {
+  parseRoute as a,
   getHrefBetween as g,
   i18n as i,
   normaliseBase$1 as n,
-  parseRoute as p,
+  page as p,
   serializeRoute as s
 };

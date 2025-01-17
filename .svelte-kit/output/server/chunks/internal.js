@@ -1,4 +1,6 @@
-import { H as HYDRATION_ERROR, g as get_next_sibling, d as define_property, s as set_active_reaction, a as set_active_effect, i as is_array, b as active_reaction, c as active_effect, e as init_operations, f as get_first_child, h as HYDRATION_START, j as HYDRATION_END, k as hydration_failed, l as clear_text_content, m as array_from, n as effect_root, o as is_passive_event, p as create_text, q as branch, r as push, t as pop, u as component_context, v as get, w as set, x as flush_sync, y as mutable_source, z as render, A as push$1, B as setContext, C as pop$1 } from "./index.js";
+import { a as active_reaction, i as is_runes, D as DERIVED, b as BLOCK_EFFECT, d as derived_sources, s as state_unsafe_mutation, c as increment_write_version, e as DIRTY, f as set_signal_status, C as CLEAN, U as UNOWNED, g as schedule_effect, M as MAYBE_DIRTY, h as active_effect, j as BRANCH_EFFECT, R as ROOT_EFFECT, u as untracked_writes, k as set_untracked_writes, H as HYDRATION_ERROR, l as get_next_sibling, m as define_property, n as set_active_reaction, o as set_active_effect, p as is_array, q as init_operations, r as get_first_child, t as HYDRATION_START, v as HYDRATION_END, w as hydration_failed, x as clear_text_content, y as array_from, z as component_root, A as is_passive_event, E as create_text, F as branch, G as push, I as pop, J as component_context, K as get, L as LEGACY_PROPS, N as flush_sync, O as render, P as push$1, Q as setContext, S as pop$1 } from "./index.js";
+import { s as safe_equals, e as equals } from "./equality.js";
+import "clsx";
 import "./paths.js";
 let public_env = {};
 let safe_public_env = {};
@@ -10,9 +12,78 @@ function set_public_env(environment) {
 function set_safe_public_env(environment) {
   safe_public_env = environment;
 }
+function source(v, stack) {
+  var signal = {
+    f: 0,
+    // TODO ideally we could skip this altogether, but it causes type errors
+    v,
+    reactions: null,
+    equals,
+    rv: 0,
+    wv: 0
+  };
+  return signal;
+}
+// @__NO_SIDE_EFFECTS__
+function mutable_source(initial_value, immutable = false) {
+  const s = source(initial_value);
+  if (!immutable) {
+    s.equals = safe_equals;
+  }
+  return s;
+}
+function set(source2, value) {
+  if (active_reaction !== null && is_runes() && (active_reaction.f & (DERIVED | BLOCK_EFFECT)) !== 0 && // If the source was created locally within the current derived, then
+  // we allow the mutation.
+  (derived_sources === null || !derived_sources.includes(source2))) {
+    state_unsafe_mutation();
+  }
+  return internal_set(source2, value);
+}
+function internal_set(source2, value) {
+  if (!source2.equals(value)) {
+    source2.v;
+    source2.v = value;
+    source2.wv = increment_write_version();
+    mark_reactions(source2, DIRTY);
+    if (active_effect !== null && (active_effect.f & CLEAN) !== 0 && (active_effect.f & (BRANCH_EFFECT | ROOT_EFFECT)) === 0) {
+      if (untracked_writes === null) {
+        set_untracked_writes([source2]);
+      } else {
+        untracked_writes.push(source2);
+      }
+    }
+  }
+  return value;
+}
+function mark_reactions(signal, status) {
+  var reactions = signal.reactions;
+  if (reactions === null) return;
+  var length = reactions.length;
+  for (var i = 0; i < length; i++) {
+    var reaction = reactions[i];
+    var flags = reaction.f;
+    if ((flags & DIRTY) !== 0) continue;
+    set_signal_status(reaction, status);
+    if ((flags & (CLEAN | UNOWNED)) !== 0) {
+      if ((flags & DERIVED) !== 0) {
+        mark_reactions(
+          /** @type {Derived} */
+          reaction,
+          MAYBE_DIRTY
+        );
+      } else {
+        schedule_effect(
+          /** @type {Effect} */
+          reaction
+        );
+      }
+    }
+  }
+}
 function hydration_mismatch(location) {
   {
-    console.warn("hydration_mismatch");
+    console.warn(`https://svelte.dev/e/hydration_mismatch`);
   }
 }
 let hydrating = false;
@@ -209,7 +280,7 @@ function _mount(Component, { target, anchor, props = {}, events, context, intro 
   event_handle(array_from(all_registered_events));
   root_event_handles.add(event_handle);
   var component = void 0;
-  var unmount2 = effect_root(() => {
+  var unmount2 = component_root(() => {
     var anchor_node = anchor ?? target.appendChild(create_text());
     branch(() => {
       if (context) {
@@ -253,7 +324,6 @@ function _mount(Component, { target, anchor, props = {}, events, context, intro 
         }
       }
       root_event_handles.delete(event_handle);
-      mounted_components.delete(component);
       if (anchor_node !== anchor) {
         anchor_node.parentNode?.removeChild(anchor_node);
       }
@@ -263,11 +333,13 @@ function _mount(Component, { target, anchor, props = {}, events, context, intro 
   return component;
 }
 let mounted_components = /* @__PURE__ */ new WeakMap();
-function unmount(component) {
+function unmount(component, options2) {
   const fn = mounted_components.get(component);
   if (fn) {
-    fn();
+    mounted_components.delete(component);
+    return fn(options2);
   }
+  return Promise.resolve();
 }
 function asClassComponent$1(component) {
   return class extends Svelte4Component {
@@ -293,7 +365,7 @@ class Svelte4Component {
   constructor(options2) {
     var sources = /* @__PURE__ */ new Map();
     var add_source = (key, value) => {
-      var s = mutable_source(value);
+      var s = /* @__PURE__ */ mutable_source(value);
       sources.set(key, s);
       return s;
     };
@@ -304,6 +376,7 @@ class Svelte4Component {
           return get(sources.get(prop) ?? add_source(prop, Reflect.get(target, prop)));
         },
         has(target, prop) {
+          if (prop === LEGACY_PROPS) return true;
           get(sources.get(prop) ?? add_source(prop, Reflect.get(target, prop)));
           return Reflect.has(target, prop);
         },
@@ -315,6 +388,7 @@ class Svelte4Component {
     );
     this.#instance = (options2.hydrate ? hydrate : mount)(options2.component, {
       target: options2.target,
+      anchor: options2.anchor,
       props,
       context: options2.context,
       intro: options2.intro ?? false,
@@ -450,6 +524,7 @@ const options = {
   embedded: false,
   env_public_prefix: "PUBLIC_",
   env_private_prefix: "",
+  hash_routing: false,
   hooks: null,
   // added lazily, via `get_hooks`
   preload_strategy: "modulepreload",
@@ -540,11 +615,23 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1ouvd98"
+  version_hash: "v51i9g"
 };
 async function get_hooks() {
+  let handle;
+  let handleFetch;
+  let handleError;
+  let init;
+  let reroute;
+  let transport;
+  ({ reroute, transport } = await import("./hooks.js"));
   return {
-    ...await import("./hooks.js")
+    handle,
+    handleFetch,
+    handleError,
+    init,
+    reroute,
+    transport
   };
 }
 export {

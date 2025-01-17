@@ -9,7 +9,7 @@
   </NavBrand>
   <NavHamburger/>
   <NavUl >
-    <NavLi href="/the-best-mens-boxer-briefs-money-can-buy-2025">Merino top 10 brands</NavLi>
+    <NavLi href="/the-best-mens-boxer-briefs-money-can-buy-2025">Top 5 Men's Boxers of 2025</NavLi>
     <NavLi href="/about">About</NavLi>
     <NavLi href="/contact">Contact</NavLi>
   </NavUl>

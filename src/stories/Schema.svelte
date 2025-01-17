@@ -79,7 +79,7 @@
         "offers": [
           {
             "@type": "Offer",
-            "url": "https://menique.com/products/mens-merino-160gsm-short-boxer-briefs",
+            "url": "https://menique.co.uk/products/mens-merino-160gsm-short-boxer-briefs",
             "price": "39.95",
             "priceValidUntil": "2025-12-31",
             "priceCurrency": "USD",

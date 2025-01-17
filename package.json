@@ -15,7 +15,7 @@
 		"test:e2e": "playwright test",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"deploy": "npm run build && gh-pages -d build -t true --cname worldtopreviews.com"
+		"deploy": "npm run build && gh-pages -d build --cname worldtopreviews.com"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.9.0",

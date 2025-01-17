@@ -26,7 +26,7 @@
 		  </div>
 		  <div class="text-xl font-medium text-[#191919] text-center mb-5">£27.00</div>
 		  <div>
-			<a href="https://menique.com/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs" class="w-full rounded-md bg-[#5DCE8B] text-white px-14 py-2">GET DEAL</a>
+			<a href="https://menique.co.uk/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs" class="w-full rounded-md bg-[#5DCE8B] text-white px-14 py-2">GET DEAL</a>
 		  </div>
 		</div>
 	  </div>

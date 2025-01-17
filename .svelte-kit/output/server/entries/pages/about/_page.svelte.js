@@ -1,5 +1,6 @@
-import { Q as escape_html } from "../../../chunks/index.js";
-import { h as html } from "../../../chunks/index3.js";
+import "clsx";
+import { a4 as escape_html } from "../../../chunks/index.js";
+import { h as html } from "../../../chunks/html.js";
 import { A as Avatar } from "../../../chunks/Avatar.js";
 function About($$payload) {
   let name = "Darius";

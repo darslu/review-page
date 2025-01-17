@@ -1,7 +1,8 @@
-import { N as rest_props, A as push, M as fallback, B as setContext, S as spread_props, J as bind_props, C as pop, R as sanitize_props, L as slot, O as getContext, T as element, G as attr, P as spread_attributes, U as sanitize_slots, F as ensure_array_like, Q as escape_html, V as stringify, W as copy_payload, X as assign_payload } from "./index.js";
+import "clsx";
+import { a0 as rest_props, P as push, $ as fallback, Q as setContext, a6 as spread_props, Y as bind_props, S as pop, a5 as sanitize_props, _ as slot, a1 as getContext, a7 as element, W as attr, a3 as clsx, a2 as spread_attributes, a8 as sanitize_slots, V as ensure_array_like, a4 as escape_html, a9 as stringify, aa as copy_payload, ab as assign_payload } from "./index.js";
 import { twMerge } from "tailwind-merge";
-import { g as getTranslationFunctions, h as html } from "./index3.js";
 import { A as Avatar } from "./Avatar.js";
+import { h as html } from "./html.js";
 import { F as Frame } from "./Frame.js";
 import { w as writable } from "./index2.js";
 function Accordion($$payload, $$props) {
@@ -106,7 +107,7 @@ function AccordionItem($$payload, $$props) {
       $$payload.out += ` class="group"`;
     },
     () => {
-      $$payload.out += `<button type="button"${attr("class", buttonClass)}${attr("aria-expanded", open)}><!---->`;
+      $$payload.out += `<button type="button"${attr("class", clsx(buttonClass))}${attr("aria-expanded", open)}><!---->`;
       slot($$payload, $$props, "header", {}, null);
       $$payload.out += `<!----> `;
       if (open) {
@@ -130,7 +131,7 @@ function AccordionItem($$payload, $$props) {
   $$payload.out += ` `;
   if (open) {
     $$payload.out += "<!--[-->";
-    $$payload.out += `<div><div${attr("class", contentClass)}><!---->`;
+    $$payload.out += `<div><div${attr("class", clsx(contentClass))}><!---->`;
     slot($$payload, $$props, "default", {}, null);
     $$payload.out += `<!----></div></div>`;
   } else {
@@ -253,70 +254,58 @@ function Button($$payload, $$props) {
   };
   const hasBorder = () => outline || color === "alternative" || color === "light";
   let buttonClass;
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   buttonClass = twMerge("text-center font-medium", group ? "focus-within:ring-2" : "focus-within:ring-4", group && "focus-within:z-10", group || "focus-within:outline-none", "inline-flex items-center justify-center " + sizeClasses[size], outline && checked && "border dark:border-gray-900", outline && checked && colorCheckedClasses[color], outline && !checked && outlineClasses[color], !outline && checked && colorCheckedClasses[color], !outline && !checked && colorClasses[color], color === "alternative" && (group && !checked ? "dark:bg-gray-700 dark:text-white dark:border-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600" : "dark:bg-transparent dark:border-gray-600 dark:hover:border-gray-600"), outline && color === "dark" && (group ? checked ? "bg-gray-900 border-gray-800 dark:border-white dark:bg-gray-600" : "dark:text-white border-gray-800 dark:border-white" : "dark:text-gray-400 dark:border-gray-700"), coloredFocusClasses[color], hasBorder() && group && "[&:not(:first-child)]:-ms-px", group ? pill && "first:rounded-s-full last:rounded-e-full" || "first:rounded-s-lg last:rounded-e-lg" : pill && "rounded-full" || "rounded-lg", shadow && "shadow-lg", shadow && coloredShadowClasses[color], disabled && "cursor-not-allowed opacity-50", $$sanitized_props.class);
   if (href && !disabled) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<a${spread_attributes({
-      ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-        {
-          "href": href,
-          ...$$restProps,
-          "class": buttonClass,
-          "role": `button`
-        },
-        [
-          {
-            attribute_name: "href",
-            lang_attribute_name: "hreflang"
-          }
-        ]
-      )
+      href,
+      ...$$restProps,
+      class: clsx(buttonClass),
+      role: "button"
     })}><!---->`;
     slot($$payload, $$props, "default", {}, null);
     $$payload.out += `<!----></a>`;
   } else {
     $$payload.out += "<!--[!-->";
-    if (tag === "button") {
+    if (tag === "label") {
       $$payload.out += "<!--[-->";
-      $$payload.out += `<button${spread_attributes({
-        ...paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-          {
-            "type": type,
-            ...$$restProps,
-            "disabled": disabled,
-            "class": buttonClass
-          },
-          [{ attribute_name: "formaction" }]
-        )
+      $$payload.out += `<label${spread_attributes({
+        ...$$restProps,
+        class: clsx(buttonClass)
       })}><!---->`;
       slot($$payload, $$props, "default", {}, null);
-      $$payload.out += `<!----></button>`;
+      $$payload.out += `<!----></label>`;
     } else {
       $$payload.out += "<!--[!-->";
-      element(
-        $$payload,
-        tag,
-        () => {
-          $$payload.out += `${spread_attributes({
-            ...`${tag}` === "button" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes({ ...$$restProps, "class": buttonClass }, [{ attribute_name: "formaction" }]) : `${tag}` === "form" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes({ ...$$restProps, "class": buttonClass }, [{ attribute_name: "action" }]) : `${tag}` === "a" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes({ ...$$restProps, "class": buttonClass }, [
-              {
-                attribute_name: "href",
-                lang_attribute_name: "hreflang"
-              }
-            ]) : { ...$$restProps, "class": buttonClass }
-          })}`;
-        },
-        () => {
-          $$payload.out += `<!---->`;
-          slot($$payload, $$props, "default", {}, null);
-          $$payload.out += `<!---->`;
-        }
-      );
+      if (tag === "button") {
+        $$payload.out += "<!--[-->";
+        $$payload.out += `<button${spread_attributes({
+          type,
+          ...$$restProps,
+          disabled,
+          class: clsx(buttonClass)
+        })}><!---->`;
+        slot($$payload, $$props, "default", {}, null);
+        $$payload.out += `<!----></button>`;
+      } else {
+        $$payload.out += "<!--[!-->";
+        element(
+          $$payload,
+          tag,
+          () => {
+            $$payload.out += `${spread_attributes({
+              ...$$restProps,
+              class: clsx(buttonClass)
+            })}`;
+          },
+          () => {
+            $$payload.out += `<!---->`;
+            slot($$payload, $$props, "default", {}, null);
+            $$payload.out += `<!---->`;
+          }
+        );
+      }
+      $$payload.out += `<!--]-->`;
     }
     $$payload.out += `<!--]-->`;
   }
@@ -435,7 +424,7 @@ function Section($$payload, $$props) {
       div: "max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6"
     }
   };
-  $$payload.out += `<section${attr("class", twMerge(sectionClass, $$sanitized_props.classSection))}><div${attr("class", twMerge(sectionClasses[name]["div"], $$sanitized_props.classDiv))}><!---->`;
+  $$payload.out += `<section${attr("class", clsx(twMerge(sectionClass, $$sanitized_props.classSection)))}><div${attr("class", clsx(twMerge(sectionClasses[name]["div"], $$sanitized_props.classDiv)))}><!---->`;
   slot($$payload, $$props, "default", {}, null);
   $$payload.out += `<!----></div></section>`;
   bind_props($$props, { sectionClass, name });
@@ -449,11 +438,11 @@ function HeroHeader($$payload, $$props) {
   let h1Class = fallback($$props["h1Class"], "mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white");
   let h2Class = fallback($$props["h2Class"], "mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl");
   let pClass = fallback($$props["pClass"], "mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400");
-  $$payload.out += `<div${attr("class", $$sanitized_props.class)}>`;
+  $$payload.out += `<div${attr("class", clsx($$sanitized_props.class))}>`;
   if ($$slots.h1) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<h1${spread_attributes({
-      class: twMerge(h1Class, $$sanitized_props.classH1),
+      class: clsx(twMerge(h1Class, $$sanitized_props.classH1)),
       ...$$restProps
     })}><!---->`;
     slot($$payload, $$props, "h1", {}, null);
@@ -464,7 +453,7 @@ function HeroHeader($$payload, $$props) {
   $$payload.out += `<!--]--> `;
   if ($$slots.h2) {
     $$payload.out += "<!--[-->";
-    $$payload.out += `<h2${attr("class", twMerge(h2Class, $$sanitized_props.classH2))}><!---->`;
+    $$payload.out += `<h2${attr("class", clsx(twMerge(h2Class, $$sanitized_props.classH2)))}><!---->`;
     slot($$payload, $$props, "h2", {}, null);
     $$payload.out += `<!----></h2>`;
   } else {
@@ -473,7 +462,7 @@ function HeroHeader($$payload, $$props) {
   $$payload.out += `<!--]--> `;
   if ($$slots.paragraph) {
     $$payload.out += "<!--[-->";
-    $$payload.out += `<p${attr("class", twMerge(pClass, $$sanitized_props.classP))}><!---->`;
+    $$payload.out += `<p${attr("class", clsx(twMerge(pClass, $$sanitized_props.classP)))}><!---->`;
     slot($$payload, $$props, "paragraph", {}, null);
     $$payload.out += `<!----></p>`;
   } else {
@@ -513,15 +502,8 @@ function HeroBanner($$payload) {
     $$slots: { default: true }
   });
 }
-function ReviewTrust($$payload, $$props) {
-  push();
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
-  $$payload.out += `<h2 class="mb-4 mb-5 mt-10 text-center text-2xl font-bold dark:text-white md:mb-16 md:mt-16 md:text-3xl">Top 5 Boxer Briefs: Test Results</h2> <div class="max-w-[1600px] mx-auto"><div class="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:gap-8 md:gap-3 lg:overflow-visible lg:grid lg:grid-cols-5 mx-5"><div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none relative"><img src="images/recommend.svg" alt="Winner badge" class="mx-auto h-8 recommended-position svelte-1q25o0e"> <div class="space-y-6 p-6 border-4 rounded-md border-[#5DCE8B] min-h-[400px] text-center"><img src="images/menique-logo.png" alt="Menique" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">100% Merino Boxer Briefs</span> <div class="flex justify-center text-[#5DCE8B] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">9.8</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£27.00</div> <div><a${attr("href", paraglide_sveltekit_translate_attribute_pass_translateAttribute(`https://menique.com/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs`, void 0))} class="w-full rounded-md bg-[#5DCE8B] text-white px-14 py-2">GET DEAL</a></div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/smartwool-logo.png" alt="Smartwool" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Merino Boxer Briefs</span> <div class="flex justify-center text-[#FAB907] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">8.6</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£45</div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/icebreaker-logo.png" alt="Icebreaker" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Anatomica Merino Boxers</span> <div class="flex justify-center text-[#FAB907] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">8.2</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£40</div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/patagonia-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Sender Boxer Briefs 6"</span> <div class="flex justify-center text-[#EA3D3D] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">7.6</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£35</div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/lululemon-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Rapid Vent Tech Boxer 5"</span> <div class="flex justify-center text-[#EA3D3D] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">7.2</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£20</div></div></div></div></div>`;
-  pop();
+function ReviewTrust($$payload) {
+  $$payload.out += `<h2 class="mb-4 mb-5 mt-10 text-center text-2xl font-bold dark:text-white md:mb-16 md:mt-16 md:text-3xl">Top 5 Boxer Briefs: Test Results</h2> <div class="max-w-[1600px] mx-auto"><div class="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:gap-8 md:gap-3 lg:overflow-visible lg:grid lg:grid-cols-5 mx-5"><div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none relative"><img src="images/recommend.svg" alt="Winner badge" class="mx-auto h-8 recommended-position svelte-1q25o0e"> <div class="space-y-6 p-6 border-4 rounded-md border-[#5DCE8B] min-h-[400px] text-center"><img src="images/menique-logo.png" alt="Menique" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">100% Merino Boxer Briefs</span> <div class="flex justify-center text-[#5DCE8B] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">9.8</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£27.00</div> <div><a href="https://menique.co.uk/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs" class="w-full rounded-md bg-[#5DCE8B] text-white px-14 py-2">GET DEAL</a></div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/smartwool-logo.png" alt="Smartwool" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Merino Boxer Briefs</span> <div class="flex justify-center text-[#FAB907] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">8.6</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£45</div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/icebreaker-logo.png" alt="Icebreaker" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Anatomica Merino Boxers</span> <div class="flex justify-center text-[#FAB907] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">8.2</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£40</div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/patagonia-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Sender Boxer Briefs 6"</span> <div class="flex justify-center text-[#EA3D3D] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">7.6</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£35</div></div></div> <div class="mt-10 snap-center shrink-0 w-[80%] max-w-[80%] lg:w-[100%] lg:max-w-none"><div class="space-y-6 p-6 border-4 rounded-md min-h-[400px] text-center"><img src="images/lululemon-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[72px] mb-4"> <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 my-5">Rapid Vent Tech Boxer 5"</span> <div class="flex justify-center text-[#EA3D3D] dark:text-white mb-10 text-center"><span class="text-5xl font-extrabold tracking-tight text-center">7.2</span></div> <div class="text-xl font-medium text-[#191919] text-center mb-5">£20</div></div></div></div></div>`;
 }
 function Writer($$payload) {
   $$payload.out += `<div class="flex items-center space-x-4 rtl:space-x-reverse container mx-auto px-5 md:px-60 mt-2 mb-6">`;
@@ -609,18 +591,13 @@ function CompareTable($$payload, $$props) {
       return { icon: condition, class: "" };
     }
   };
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   const each_array = ensure_array_like(boxerBriefsData);
-  $$payload.out += `<h2 class="mb-4 mb-5 mt-10 text-center text-2xl font-bold dark:text-white md:mt-16 md:mb-16 md:text-3xl">Top 5 Boxer Briefs: Test Results</h2> <div class="table-container 2xl:mx-auto 2xl:w-[1600px] mb-20 svelte-yvpoxi"><table class="mx-5 xl:mx-0 svelte-yvpoxi"><thead><tr><th class="svelte-yvpoxi"></th><th${attr("class", `${stringify("main-column pt-0 rounded-t-md border-x-4 border-t-4 border-[#5DCE8B]")} svelte-yvpoxi`)}><img src="images/medal.svg" alt="Winner badge" class="mx-auto h-20 medal-position svelte-yvpoxi"> <img src="images/menique-logo.png" alt="Menique" class="mx-auto h-10"> <span class="mt-2 block text-sm font-medium text-gray-600">100% Merino Boxer Briefs</span></th><th${attr("class", `${stringify("")} svelte-yvpoxi`)}><img src="images/smartwool-logo.png" alt="Smartwool" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Merino Boxer Briefs</span></th><th${attr("class", `${stringify("")} svelte-yvpoxi`)}><img src="images/icebreaker-logo.png" alt="Icebreaker" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Anatomica Merino Boxers</span></th><th${attr("class", `${stringify("")} svelte-yvpoxi`)}><img src="images/patagonia-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Sender Boxer Briefs 6"</span></th><th${attr("class", `${stringify("")} svelte-yvpoxi`)}><img src="images/lululemon-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Rapid Vent Tech Boxer 5"</span></th></tr></thead><tbody class="svelte-yvpoxi"><tr class="svelte-yvpoxi"><td class="svelte-yvpoxi"></td><td${attr("class", `${stringify("main-column border-x-4 border-[#5DCE8B]")} svelte-yvpoxi`)}><img src="images/menique-boxers.png" alt="Menique Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", `${stringify("p-0")} svelte-yvpoxi`)}><img src="/images/smartwool-boxers.png" alt="Smartwool Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", `${stringify("p-0")} svelte-yvpoxi`)}><img src="/images/icebreaker-boxers.png" alt="Icebreaker Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", `${stringify("p-0")} svelte-yvpoxi`)}><img src="/images/patagonia-boxers.png" alt="Patagonia Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", `${stringify("p-0")} svelte-yvpoxi`)}><img src="/images/lululemon-boxers.png" alt="Lululemon Boxer Briefs" class="mx-auto w-8/12"></td></tr><!--[-->`;
+  $$payload.out += `<h2 class="mb-4 mb-5 mt-10 text-center text-2xl font-bold dark:text-white md:mt-16 md:mb-16 md:text-3xl">Top 5 Boxer Briefs: Test Results</h2> <div class="table-container 2xl:mx-auto 2xl:w-[1600px] mb-20 svelte-yvpoxi"><table class="mx-5 xl:mx-0 svelte-yvpoxi"><thead><tr><th class="svelte-yvpoxi"></th><th${attr("class", clsx("main-column pt-0 rounded-t-md border-x-4 border-t-4 border-[#5DCE8B]") + " svelte-yvpoxi")}><img src="images/medal.svg" alt="Winner badge" class="mx-auto h-20 medal-position svelte-yvpoxi"> <img src="images/menique-logo.png" alt="Menique" class="mx-auto h-10"> <span class="mt-2 block text-sm font-medium text-gray-600">100% Merino Boxer Briefs</span></th><th${attr("class", clsx("") + " svelte-yvpoxi")}><img src="images/smartwool-logo.png" alt="Smartwool" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Merino Boxer Briefs</span></th><th${attr("class", clsx("") + " svelte-yvpoxi")}><img src="images/icebreaker-logo.png" alt="Icebreaker" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Anatomica Merino Boxers</span></th><th${attr("class", clsx("") + " svelte-yvpoxi")}><img src="images/patagonia-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Sender Boxer Briefs 6"</span></th><th${attr("class", clsx("") + " svelte-yvpoxi")}><img src="images/lululemon-logo.png" alt="Patagonia" class="mx-auto h-8 mt-[84px]"> <span class="mt-2 block text-sm font-medium text-gray-600">Rapid Vent Tech Boxer 5"</span></th></tr></thead><tbody class="svelte-yvpoxi"><tr class="svelte-yvpoxi"><td class="svelte-yvpoxi"></td><td${attr("class", clsx("main-column border-x-4 border-[#5DCE8B]") + " svelte-yvpoxi")}><img src="images/menique-boxers.png" alt="Menique Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", clsx("p-0") + " svelte-yvpoxi")}><img src="/images/smartwool-boxers.png" alt="Smartwool Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", clsx("p-0") + " svelte-yvpoxi")}><img src="/images/icebreaker-boxers.png" alt="Icebreaker Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", clsx("p-0") + " svelte-yvpoxi")}><img src="/images/patagonia-boxers.png" alt="Patagonia Boxer Briefs" class="mx-auto w-8/12"></td><td${attr("class", clsx("p-0") + " svelte-yvpoxi")}><img src="/images/lululemon-boxers.png" alt="Lululemon Boxer Briefs" class="mx-auto w-8/12"></td></tr><!--[-->`;
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let row = each_array[$$index];
-    $$payload.out += `<tr class="svelte-yvpoxi"><td class="svelte-yvpoxi">${escape_html(row.feature)}</td><td${attr("class", `${stringify("main-column border-x-4 border-[#5DCE8B]")} svelte-yvpoxi`)}><span${attr("class", `${stringify(getIcon(row.Menique).class)} svelte-yvpoxi`)}>${html(getIcon(row.Menique).icon)}</span></td><td${attr("class", `${stringify("")} svelte-yvpoxi`)}><span${attr("class", `${stringify(getIcon(row.Smartwool).class)} svelte-yvpoxi`)}>${html(getIcon(row.Smartwool).icon)}</span></td><td${attr("class", `${stringify("")} svelte-yvpoxi`)}><span${attr("class", `${stringify(getIcon(row.Icebreaker).class)} svelte-yvpoxi`)}>${html(getIcon(row.Icebreaker).icon)}</span></td><td${attr("class", `${stringify("")} svelte-yvpoxi`)}><span${attr("class", `${stringify(getIcon(row.Patagonia).class)} svelte-yvpoxi`)}>${html(getIcon(row.Patagonia).icon)}</span></td><td${attr("class", `${stringify("")} svelte-yvpoxi`)}><span${attr("class", `${stringify(getIcon(row.Lululemon).class)} svelte-yvpoxi`)}>${html(getIcon(row.Lululemon).icon)}</span></td></tr>`;
+    $$payload.out += `<tr class="svelte-yvpoxi"><td class="svelte-yvpoxi">${escape_html(row.feature)}</td><td${attr("class", clsx("main-column border-x-4 border-[#5DCE8B]") + " svelte-yvpoxi")}><span${attr("class", clsx(getIcon(row.Menique).class) + " svelte-yvpoxi")}>${html(getIcon(row.Menique).icon)}</span></td><td${attr("class", clsx("") + " svelte-yvpoxi")}><span${attr("class", clsx(getIcon(row.Smartwool).class) + " svelte-yvpoxi")}>${html(getIcon(row.Smartwool).icon)}</span></td><td${attr("class", clsx("") + " svelte-yvpoxi")}><span${attr("class", clsx(getIcon(row.Icebreaker).class) + " svelte-yvpoxi")}>${html(getIcon(row.Icebreaker).icon)}</span></td><td${attr("class", clsx("") + " svelte-yvpoxi")}><span${attr("class", clsx(getIcon(row.Patagonia).class) + " svelte-yvpoxi")}>${html(getIcon(row.Patagonia).icon)}</span></td><td${attr("class", clsx("") + " svelte-yvpoxi")}><span${attr("class", clsx(getIcon(row.Lululemon).class) + " svelte-yvpoxi")}>${html(getIcon(row.Lululemon).icon)}</span></td></tr>`;
   }
-  $$payload.out += `<!--]--><tr class="svelte-yvpoxi"><td class="svelte-yvpoxi"></td><td class="main-column my-10 rounded-b-md border-x-4 border-b-4 border-[#5DCE8B] px-0 svelte-yvpoxi"><a${attr("href", paraglide_sveltekit_translate_attribute_pass_translateAttribute(`https://menique.com/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs`, void 0))} class="block my-2 rounded-md bg-[#5DCE8B] w-full py-2 text-white" aria-label="Visit Menique">Get Deal</a></td><td class="svelte-yvpoxi"></td><td class="svelte-yvpoxi"></td><td class="svelte-yvpoxi"></td><td class="svelte-yvpoxi"></td></tr></tbody></table></div>`;
+  $$payload.out += `<!--]--><tr class="svelte-yvpoxi"><td class="svelte-yvpoxi"></td><td class="main-column my-10 rounded-b-md border-x-4 border-b-4 border-[#5DCE8B] px-0 svelte-yvpoxi"><a href="https://menique.co.uk/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs" class="block my-2 rounded-md bg-[#5DCE8B] w-full py-2 text-white" aria-label="Visit Menique">Get Deal</a></td><td class="svelte-yvpoxi"></td><td class="svelte-yvpoxi"></td><td class="svelte-yvpoxi"></td><td class="svelte-yvpoxi"></td></tr></tbody></table></div>`;
   pop();
 }
 function ProductDetails($$payload, $$props) {
@@ -629,7 +606,7 @@ function ProductDetails($$payload, $$props) {
     {
       title: "Menique Men's 100% Merino Boxer Briefs",
       productUrl: [
-        "https://menique.com/products/mens-merino-160gsm-short-boxer-briefs",
+        "https://menique.co.uk/products/mens-merino-160gsm-short-boxer-briefs",
         "https://www.amazon.co.uk/menique-Merino-Short-Briefs-Regular/dp/B0CPYCB6CR/"
       ],
       linkTitle: ["£27.00 Official Dealer", "£21.95 Amazon"],
@@ -771,11 +748,6 @@ function ProductDetails($$payload, $$props) {
   function calculateAverageScore(ratings) {
     return Object.values(ratings).reduce((sum, value) => sum + value, 0) / Object.values(ratings).length;
   }
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   const each_array = ensure_array_like(products);
   $$payload.out += `<div class="mx-5 my-28 space-y-8"><h2 class="s-hmLmOhxWmjw9 mb-4 mb-5 text-center text-2xl font-bold dark:text-white md:mb-16 md:text-3xl">A Closer Look at Bestsellers</h2> <!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
@@ -876,7 +848,7 @@ function ProductDetails($$payload, $$props) {
     $$payload.out += `<!--]--></ul></div></div> <div class="mt-10"><h3 class="mb-2 text-lg font-semibold">Review</h3> <p class="text-gray-700">${html(showMoreState[i] ? product.review : `${product.review.slice(0, 400)}...`)}</p> <button class="mt-2 text-blue-500 underline hover:text-blue-700">${escape_html(showMoreState[i] ? "Show Less" : "Show More")}</button></div> `;
     if (product.title === "Menique Men's 100% Merino Boxer Briefs") {
       $$payload.out += "<!--[-->";
-      $$payload.out += `<div class="mt-10"><p class="text-gray-700"><span class="font-semibold">Read more:</span> <a${attr("href", paraglide_sveltekit_translate_attribute_pass_translateAttribute(product.productUrl, void 0))} class="underline underline-offset-2">Menique Merino Wool Boxer Briefs.</a></p></div>`;
+      $$payload.out += `<div class="mt-10"><p class="text-gray-700"><span class="font-semibold">Read more:</span> <a${attr("href", product.productUrl)} class="underline underline-offset-2">Menique Merino Wool Boxer Briefs.</a></p></div>`;
     } else {
       $$payload.out += "<!--[!-->";
     }
@@ -895,6 +867,9 @@ function FAQ($$payload) {
       multiple: true,
       children: ($$payload3) => {
         AccordionItem($$payload3, {
+          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
+          activeClass: "bg-white-0 hover:bg-white-0",
+          inactiveClass: "bg-white-0 hover:bg-white-0",
           get open() {
             return items[0];
           },
@@ -902,9 +877,6 @@ function FAQ($$payload) {
             items[0] = $$value;
             $$settled = false;
           },
-          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
-          activeClass: "bg-white-0 hover:bg-white-0",
-          inactiveClass: "bg-white-0 hover:bg-white-0",
           children: ($$payload4) => {
             $$payload4.out += `<p class="mb-2 text-[#191919] dark:text-gray-400">When it comes to finding the best type of underwear, boxer briefs are a top choice for their blend of comfort, versatility, and support. They provide excellent coverage while staying breathable and flexible, making them ideal for everyday wear, working out, or even travel. In my own experience, they stay put without bunching and feel secure without being overly tight. The support they offer is especially beneficial for active days or long commutes. Based on personal trial, boxer briefs tend to outperform other styles for both functionality and comfort. <br><br>On warmer days or when I want a looser fit, boxers are my go-to choice because they’re incredibly breathable and lightweight. They’re perfect for lounging or casual days when support isn’t as much of a priority. However, while comfortable, they lack the structure boxer briefs offer, which can lead to discomfort during physical activity. For those who prioritize simplicity and movement, briefs are another good option—they provide excellent support for running or sports without excess fabric. <br><br>Ultimately, the "best" type of underwear will depend on body type, activity level, and personal fit preferences. Comfort is key, so trial and error may lead to finding the perfect pair for any occasion.</p>`;
           },
@@ -917,6 +889,9 @@ function FAQ($$payload) {
         });
         $$payload3.out += `<!----> `;
         AccordionItem($$payload3, {
+          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
+          activeClass: "bg-white-0 hover:bg-white-0",
+          inactiveClass: "bg-white-0 hover:bg-white-0",
           get open() {
             return items[1];
           },
@@ -924,9 +899,6 @@ function FAQ($$payload) {
             items[1] = $$value;
             $$settled = false;
           },
-          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
-          activeClass: "bg-white-0 hover:bg-white-0",
-          inactiveClass: "bg-white-0 hover:bg-white-0",
           children: ($$payload4) => {
             $$payload4.out += `<p class="mb-2 text-[#191919] dark:text-gray-400">Based on my personal experience and testing, I recommend brands that offer natural materials, like Merino wool boxers for their unbeatable comfort, performance, and durability. Brands like Menique, Smartwool, and Icebreaker stand out for their high-quality options. However, after my latest research and hands-on experience, Menique's products are my top choice. They provide the perfect balance of comfort, odor resistance, breathability, and durability while maintaining a great fit for everyday wear. What makes Menique even better is that they offer a wide range of underwear options for both men and women, focusing on style, quality, and natural comfort.</p>`;
           },
@@ -939,6 +911,9 @@ function FAQ($$payload) {
         });
         $$payload3.out += `<!----> `;
         AccordionItem($$payload3, {
+          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
+          activeClass: "bg-white-0 hover:bg-white-0",
+          inactiveClass: "bg-white-0 hover:bg-white-0",
           get open() {
             return items[2];
           },
@@ -946,9 +921,6 @@ function FAQ($$payload) {
             items[2] = $$value;
             $$settled = false;
           },
-          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
-          activeClass: "bg-white-0 hover:bg-white-0",
-          inactiveClass: "bg-white-0 hover:bg-white-0",
           children: ($$payload4) => {
             $$payload4.out += `<p class="mb-2 text-[#191919] dark:text-gray-400">Optimizing the comfort of boxers begins with choosing the right materials, as factors like moisture management, softness, and temperature depend on fabric selection. <br><br><b>Cotton</b>: While 100% cotton has long been a popular choice due to its breathability, it falls short in moisture management and can lose shape over time, leading to discomfort. Additionally, it can lead to an unpleasant feeling in warm conditions. Blended fabrics are a better option as they are typically more moisture-wicking and comfortable. Alternatives like Tencel and Merino wool are highly recommended for their breathability, odor control, and moisture management properties. <br><br><b>Blends</b>Blends: Blending fabrics such as nylon and spandex offers a modern approach. Nylon is excellent for moisture-wicking and maintains shape without pilling, while spandex adds flexibility and enhances comfort for movement. For those who prefer a single material, 100% Merino wool is a strong alternative due to its natural moisture-wicking and breathable properties. <br><br><b>Modal</b>Modal: Fabrics like micro modal are moisture-wicking, lightweight, and resistant to shrinkage while maintaining a silky, soft feel. Micro modal is also known for not locking in bacteria like polyester does. For an even stronger alternative, lyocell offers superior softness, durability, and tear resistance compared to modal, though it comes at a higher price.</p>`;
           },
@@ -961,6 +933,9 @@ function FAQ($$payload) {
         });
         $$payload3.out += `<!----> `;
         AccordionItem($$payload3, {
+          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
+          activeClass: "bg-white-0 hover:bg-white-0",
+          inactiveClass: "bg-white-0 hover:bg-white-0",
           get open() {
             return items[3];
           },
@@ -968,9 +943,6 @@ function FAQ($$payload) {
             items[3] = $$value;
             $$settled = false;
           },
-          defaultClass: "text-[#191919] flex items-center justify-between w-full font-medium text-left group-first:rounded-t-md border-s border-e group-first:border-t border-b border-gray-200 dark:border-gray-700 p-5  dark:text-gray-400 hover:dark:bg-gray-800",
-          activeClass: "bg-white-0 hover:bg-white-0",
-          inactiveClass: "bg-white-0 hover:bg-white-0",
           children: ($$payload4) => {
             $$payload4.out += `<p class="mb-2 text-[#191919] dark:text-gray-400">I typically replace my boxers every 6 to 12 months, depending on how often I wear them and how they’re holding up. In my experience, even the best quality boxers start showing wear over time—losing their shape, elasticity, or developing small holes. I try to keep an eye on them, and if they start feeling less supportive or showing obvious signs of damage, I’ll swap them out. Regularly replacing them keeps things comfortable, prevents hygiene issues, and ensures they’re working the way they should.</p>`;
           },
@@ -1122,7 +1094,7 @@ function Schema($$payload) {
           "offers": [
             {
               "@type": "Offer",
-              "url": "https://menique.com/products/mens-merino-160gsm-short-boxer-briefs",
+              "url": "https://menique.co.uk/products/mens-merino-160gsm-short-boxer-briefs",
               "price": "39.95",
               "priceValidUntil": "2025-12-31",
               "priceCurrency": "USD",

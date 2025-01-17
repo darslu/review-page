@@ -13,7 +13,7 @@
         <div>
           <h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2>
           <FooterLinkGroup>
-            <FooterLink liClass="mb-4" href="/the-best-mens-boxer-briefs-money-can-buy-2025">Merino top 10 brands</FooterLink>
+            <FooterLink liClass="mb-4" href="/the-best-mens-boxer-briefs-money-can-buy-2025">Top 5 Men's Boxers of 2025</FooterLink>
             <FooterLink liClass="mb-4" href="/about">About</FooterLink>
             <FooterLink liClass="mb-4" href="/contact">Contact</FooterLink>
           </FooterLinkGroup>

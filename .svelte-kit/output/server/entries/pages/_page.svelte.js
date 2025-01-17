@@ -1,3 +1,4 @@
+import "clsx";
 import { S as Schema, H as HeroBanner, W as Writer, C as CompareTable, P as ProductDetails, a as Summary, R as ReviewTrust, T as TestingFeatures, b as Reassurance, F as FullWidthElement, c as FAQ } from "../../chunks/TestingFeatures.js";
 function _page($$payload) {
   Schema($$payload);

@@ -13,16 +13,14 @@
     "file": "chunks/Avatar.js",
     "name": "Avatar",
     "imports": [
-      "_index.js",
-      "_index3.js"
+      "_index.js"
     ]
   },
   "_Frame.js": {
     "file": "chunks/Frame.js",
     "name": "Frame",
     "imports": [
-      "_index.js",
-      "_index3.js"
+      "_index.js"
     ]
   },
   "_TestingFeatures.js": {
@@ -30,8 +28,8 @@
     "name": "TestingFeatures",
     "imports": [
       "_index.js",
-      "_index3.js",
       "_Avatar.js",
+      "_html.js",
       "_Frame.js",
       "_index2.js"
     ],
@@ -39,21 +37,34 @@
       "_app/immutable/assets/TestingFeatures.BpoHteS1.css"
     ]
   },
-  "_constants.js": {
-    "file": "chunks/constants.js",
-    "name": "constants"
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_index2.js",
+      "_exports.js",
+      "_index.js"
+    ]
+  },
+  "_equality.js": {
+    "file": "chunks/equality.js",
+    "name": "equality"
   },
   "_exports.js": {
     "file": "chunks/exports.js",
     "name": "exports"
   },
+  "_html.js": {
+    "file": "chunks/html.js",
+    "name": "html"
+  },
   "_i18n.js": {
     "file": "chunks/i18n.js",
     "name": "i18n",
     "imports": [
-      "_stores.js",
+      "_client.js",
       "_paths.js",
-      "_constants.js",
+      "_index.js",
       "_index2.js"
     ]
   },
@@ -65,15 +76,8 @@
     "file": "chunks/index2.js",
     "name": "index",
     "imports": [
-      "_index.js"
-    ]
-  },
-  "_index3.js": {
-    "file": "chunks/index3.js",
-    "name": "index",
-    "imports": [
-      "_constants.js",
-      "_index.js"
+      "_index.js",
+      "_equality.js"
     ]
   },
   "_internal.js": {
@@ -81,6 +85,7 @@
     "name": "internal",
     "imports": [
       "_index.js",
+      "_equality.js",
       "_paths.js"
     ],
     "dynamicImports": [
@@ -91,14 +96,6 @@
     "file": "chunks/paths.js",
     "name": "paths"
   },
-  "_stores.js": {
-    "file": "chunks/stores.js",
-    "name": "stores",
-    "imports": [
-      "_index.js",
-      "_exports.js"
-    ]
-  },
   "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
@@ -106,7 +103,7 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_stores.js"
+      "_client.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -145,14 +142,14 @@
     "imports": [
       "_index.js",
       "_i18n.js",
-      "_stores.js",
       "_paths.js",
       "_index2.js",
-      "_index3.js",
-      "_Frame.js"
+      "_client.js",
+      "_Frame.js",
+      "_html.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.Brkz3zP9.css"
+      "_app/immutable/assets/_layout.DQCxBcAw.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -171,7 +168,7 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_index3.js",
+      "_html.js",
       "_Avatar.js"
     ],
     "css": [

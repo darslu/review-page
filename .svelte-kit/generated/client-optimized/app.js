@@ -24,8 +24,15 @@ export const dictionary = {
 
 export const hooks = {
 	handleError: (({ error }) => { console.error(error) }),
-
-	reroute: universal_hooks.reroute || (() => {})
+	
+	reroute: universal_hooks.reroute || (() => {}),
+	transport: universal_hooks.transport || {}
 };
+
+export const decoders = Object.fromEntries(Object.entries(hooks.transport).map(([k, v]) => [k, v.decode]));
+
+export const hash = false;
+
+export const decode = (type, value) => decoders[type](value);
 
 export { default as root } from '../root.js';

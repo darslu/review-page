@@ -170,7 +170,7 @@
 				<td></td>
 				<td class="main-column my-10 rounded-b-md border-x-4 border-b-4 border-[#5DCE8B] px-0">
 					<a
-						href="https://menique.com/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs"
+						href="https://menique.co.uk/collections/mens-merino-underwear/products/mens-merino-160gsm-short-boxer-briefs"
 						class="block my-2 rounded-md bg-[#5DCE8B] w-full py-2 text-white"
 						aria-label="Visit Menique">Get Deal</a
 					>

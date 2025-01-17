@@ -1,5 +1,4 @@
-import { N as rest_props, A as push, B as setContext, M as fallback, T as element, L as slot, P as spread_attributes, J as bind_props, C as pop, R as sanitize_props } from "./index.js";
-import { g as getTranslationFunctions } from "./index3.js";
+import { a0 as rest_props, P as push, Q as setContext, $ as fallback, a7 as element, _ as slot, a2 as spread_attributes, a3 as clsx, Y as bind_props, S as pop, a5 as sanitize_props } from "./index.js";
 import { twMerge } from "tailwind-merge";
 const bgColors = {
   gray: "bg-gray-50 dark:bg-gray-800",
@@ -94,11 +93,6 @@ function Frame($$payload, $$props) {
     none: ""
   };
   let divClass;
-  const paraglide_sveltekit_translate_attribute_pass_translationFunctions = getTranslationFunctions();
-  const [
-    paraglide_sveltekit_translate_attribute_pass_translateAttribute,
-    paraglide_sveltekit_translate_attribute_pass_handle_attributes
-  ] = paraglide_sveltekit_translate_attribute_pass_translationFunctions;
   color = color ?? "default";
   setContext("color", color);
   divClass = twMerge(bgColors[color], textColors[color], rounded && "rounded-lg", border && "border", borderColors[color], shadow && "shadow-md", $$sanitized_props.class);
@@ -109,37 +103,9 @@ function Frame($$payload, $$props) {
       tag,
       () => {
         $$payload.out += `${spread_attributes({
-          ...`${tag}` === "button" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-            {
-              "role": role,
-              ...$$restProps,
-              "class": divClass
-            },
-            [{ attribute_name: "formaction" }]
-          ) : `${tag}` === "form" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-            {
-              "role": role,
-              ...$$restProps,
-              "class": divClass
-            },
-            [{ attribute_name: "action" }]
-          ) : `${tag}` === "a" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-            {
-              "role": role,
-              ...$$restProps,
-              "class": divClass
-            },
-            [
-              {
-                attribute_name: "href",
-                lang_attribute_name: "hreflang"
-              }
-            ]
-          ) : {
-            "role": role,
-            ...$$restProps,
-            "class": divClass
-          }
+          role,
+          ...$$restProps,
+          class: clsx(divClass)
         })}`;
       },
       () => {
@@ -157,37 +123,9 @@ function Frame($$payload, $$props) {
         tag,
         () => {
           $$payload.out += `${spread_attributes({
-            ...`${tag}` === "button" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-              {
-                "role": role,
-                ...$$restProps,
-                "class": divClass
-              },
-              [{ attribute_name: "formaction" }]
-            ) : `${tag}` === "form" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-              {
-                "role": role,
-                ...$$restProps,
-                "class": divClass
-              },
-              [{ attribute_name: "action" }]
-            ) : `${tag}` === "a" ? paraglide_sveltekit_translate_attribute_pass_handle_attributes(
-              {
-                "role": role,
-                ...$$restProps,
-                "class": divClass
-              },
-              [
-                {
-                  attribute_name: "href",
-                  lang_attribute_name: "hreflang"
-                }
-              ]
-            ) : {
-              "role": role,
-              ...$$restProps,
-              "class": divClass
-            }
+            role,
+            ...$$restProps,
+            class: clsx(divClass)
           })}`;
         },
         () => {
